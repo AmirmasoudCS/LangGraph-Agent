@@ -3,7 +3,7 @@ from rich.panel import Panel
 from rich.text import Text
 from langchain_core.messages import AIMessage, ToolMessage, HumanMessage
 
-from src.graph import graph
+from src.graph import graph as default_graph
 
 console = Console()
 
@@ -31,14 +31,16 @@ def render_message(m) -> list:
     return parts
 
 
-def run_with_internals(question: str, thread_id: str):
+def run_with_internals(question: str, thread_id: str, g=None):
     """Stream the graph and print one panel per node execution."""
+    if g is None:
+        g = default_graph
     inputs = {"messages": [("user", question)], "iterations": 0, "verdict": ""}
     config = {"configurable": {"thread_id": thread_id}}
     step_no = 0
 
     with console.status("[bold cyan]thinking...", spinner="dots"):
-        for step in graph.stream(inputs, config=config, stream_mode="updates"):
+        for step in g.stream(inputs, config=config, stream_mode="updates"):
             for node, update in step.items():
                 update = update or {}
                 if node == "summarize" and not update:
@@ -65,5 +67,5 @@ def run_with_internals(question: str, thread_id: str):
                 ))
 
     # Streaming doesn't return the final result, so read it from the checkpoint
-    state = graph.get_state(config).values
-    return state["messages"][-1].content, state["iterations"], state["verdict"]
+    state = g.get_state(config).values
+    return state["messages"][-1].content, state.get("iterations", 0), state.get("verdict", "")
