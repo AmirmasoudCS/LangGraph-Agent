@@ -10,6 +10,7 @@ from src.config import (
     get_llm, MAX_REVISIONS, MAX_HISTORY_TOKENS,
     SUMMARY_TRIGGER_TOKENS, KEEP_RECENT_TOKENS,
 )
+from src.facts import facts_for_prompt
 from src.memory import checkpointer
 from src.state import AgentState
 from src.tools import ALL_TOOLS
@@ -101,6 +102,10 @@ def agent(state: AgentState):
     system_text = SYSTEM_TEXT
     if state.get("summary"):
         system_text += f"\n\nSummary of the earlier conversation:\n{state['summary']}"
+
+    known = facts_for_prompt()
+    if known:
+        system_text += f"\n\nKnown facts about the user (from earlier sessions):\n{known}"
 
     # Safety net: trim what the model SEES; the database keeps everything.
     history = trim_messages(
