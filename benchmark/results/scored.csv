@@ -1,0 +1,295 @@
+id,category,condition,correct,source,note,latency_s,llm_calls,tool_calls,input_tokens,output_tokens,revisions,error,tools_used,expected_tools,question,answer
+calc-01,calculator,baseline,True,auto,"expected 1.6247e+06, answer numbers [1.0, 1624677.0, 2.0, 1624677.0, 1624696.0, 1624696.0]",12.75,1,0,33,447,0,,,calculator,What is 4821 * 337 + 19?,"The calculation is as follows:
+
+1. **Multiply 4821 by 337:**
+   $4821 \times 337 = 1,624,677$
+
+2. **Add 19:**
+   $1,624,677 + 19 = 1,624,696$
+
+The answer is **1,624,696**."
+calc-01,calculator,agent_full,True,auto,"expected 1.6247e+06, answer numbers [1624696.0]",13.52,3,1,1481,183,0,,calculator,calculator,What is 4821 * 337 + 19?,"1,624,696"
+calc-02,calculator,baseline,True,auto,"expected 9.74068e+07, answer numbers [97406784.0]",33.5,1,0,31,1164,0,,,calculator,What is 123456 * 789?,"The product of 123456 and 789 is **97,406,784**."
+calc-02,calculator,agent_full,True,auto,"expected 9.74068e+07, answer numbers [97406784.0]",13.81,3,1,1493,192,0,,calculator,calculator,What is 123456 * 789?,"123456 * 789 is 97,406,784."
+calc-03,calculator,baseline,True,auto,"expected 628992, answer numbers [1.0, 6912.0, 2.0, 6912.0, 90.0, 6912.0]",30.39,1,0,34,1055,0,,,calculator,Calculate (1234 + 5678) * 91.,"This calculation can be performed in two steps:
+
+**Step 1: Calculate the sum inside the parentheses.**
+$$1234 + 5678 = 6912$$
+
+**Step 2: Multiply the result by 91.**
+$$6912 \times 91$$
+
+We can calculate this by multiplying by 90 and then adding the original number:
+$$6912 \times 91 = 6912 \times (90 + 1)$$
+$$= (6912 \times 90) + (6912 \times 1)$$
+
+$$6912 \times 90 = 622,080$$
+$$6912 \times 1 = 6,912$$
+
+$$622,080 + 6,912 = 629,000 - 100 + 912 = 628,992$$
+
+The final answer is **628,992**."
+calc-03,calculator,agent_full,True,auto,"expected 628992, answer numbers [628992.0]",18.48,3,1,1641,200,0,,calculator,calculator,Calculate (1234 + 5678) * 91.,"628,992"
+calc-04,calculator,baseline,True,auto,"expected 1.04858e+06, answer numbers [1048576.0, 1024.0, 1024.0]",8.76,1,0,28,305,0,,,calculator,What is 2 to the power of 20?,"$2^{20}$ is **1,048,576**.
+
+(It is equal to $1024 \times 1024$)."
+calc-04,calculator,agent_full,True,auto,"expected 1.04858e+06, answer numbers [1048576.0]",10.25,3,1,1386,152,0,,calculator,calculator,What is 2 to the power of 20?,"2 to the power of 20 is 1,048,576."
+calc-05,calculator,baseline,True,auto,"expected 22.86, answer numbers [22.85505, 22.86]",17.13,1,0,39,595,0,,,calculator,What is 98765 divided by 4321? Round to 2 decimal places.,"$$98765 \div 4321 \approx 22.85505...$$
+
+Rounding to two decimal places, the answer is **22.86**."
+calc-05,calculator,agent_full,True,auto,"expected 22.86, answer numbers [22.86]",16.23,3,1,1572,232,0,,calculator,calculator,What is 98765 divided by 4321? Round to 2 decimal places.,98765 divided by 4321 is approximately **22.86**.
+calc-06,calculator,baseline,True,auto,"expected 416.5, answer numbers [0.17, 0.17, 416.5, 416.5]",14.49,1,0,29,504,0,,,calculator,What is 17% of 2450?,"To find 17% of 2450, you can multiply 2450 by 0.17:
+
+$$2450 \times 0.17 = 416.5$$
+
+**Answer:** 17% of 2450 is **416.5**."
+calc-06,calculator,agent_full,True,auto,"expected 416.5, answer numbers [416.5]",14.38,3,1,1515,192,0,,calculator,calculator,What is 17% of 2450?,17% of 2450 is 416.5.
+calc-07,calculator,baseline,True,auto,"expected 4.03536e+07, answer numbers [40353607.0]",19.27,1,0,27,670,0,,,calculator,What is 7 to the power of 9?,"$7$ to the power of $9$ ($7^9$) is:
+
+**40,353,607**"
+calc-07,calculator,agent_full,True,auto,"expected 4.03536e+07, answer numbers [40353607.0]",14.88,3,1,1544,150,0,,calculator,calculator,What is 7 to the power of 9?,"7 to the power of 9 is 40,353,607."
+calc-08,calculator,baseline,True,auto,"expected 521.8, answer numbers [1.0, 555.1, 2.0, 555.1, 555.1, 521.8]",14.84,1,0,36,517,0,,,calculator,Compute (45.5 * 12.2) - 33.3.,"We need to compute the expression $(45.5 \times 12.2) - 33.3$.
+
+**Step 1: Calculate the product $45.5 \times 12.2$.**
+
+$$45.5 \times 12.2 = 555.1$$
+
+**Step 2: Subtract $33.3$ from the result.**
+
+$$555.1 - 33.3$$
+
+$$555.1 - 33.3 = 521.8$$
+
+The computed value is **521.8**."
+calc-08,calculator,agent_full,True,auto,"expected 521.8, answer numbers [521.8]",18.77,3,1,1655,224,0,,calculator,calculator,Compute (45.5 * 12.2) - 33.3.,521.8
+calc-09,calculator,baseline,True,auto,"expected 9.99998e+11, answer numbers [1.0, 1000000.0, 1.0, 2.0, 2.0, 1000000.0]",29.42,1,0,34,1020,0,,,calculator,What is 999999 * 999999?,"This is a classic problem that can be solved most easily using algebra by recognizing the pattern.
+
+### Method 1: Using Algebra (The Quickest Way)
+
+We can rewrite $999,999$ as $(1,000,000 - 1)$.
+
+Let $N = 999,999$. We are calculating $N^2$:
+$$N^2 = (1,000,000 - 1)^2$$
+
+Using the algebraic identity $(a - b)^2 = a^2 - 2ab + b^2$:
+$$N^2 = (1,000,000)^2 - 2(1,000,000)(1) + 1^2$$
+
+1.  $(1,000,000)^2 = 1,000,000,000,000$ (1 followed by 12 zeros)
+2.  $2(1,000,000)(1) = 2,000,000$
+3.  $1^2 = 1$
+
+$$N^2 = 1,000,000,000,000 - 2,000,000 + 1$$
+
+$$N^2 = 999,998,000,000 + 1$$
+
+$$N^2 = 999,998,000,001$$
+
+***
+
+### Answer
+
+$$999,999 \times 999,999 = 999,998,000,001$$"
+calc-09,calculator,agent_full,True,auto,"expected 9.99998e+11, answer numbers [999998000001.0]",15.21,3,1,1542,216,0,,calculator,calculator,What is 999999 * 999999?,"999999 * 999999 is 999,998,000,001."
+time-01,datetime,baseline,False,auto,no clock time in answer,9.35,1,0,25,325,0,,,get_current_datetime,What is the current local time in Tokyo?,"I cannot provide you with the exact, real-time current local time in Tokyo because I do not have access to a live clock.
+
+However, I can tell you that Tokyo operates in the **Japan Standard Time (JST)** zone, which is UTC+9.
+
+To get the precise current time, please check a reliable source such as:
+
+*   A search engine (e.g., Google search for ""time in Tokyo"").
+*   A dedicated world clock website."
+time-01,datetime,agent_full,True,auto,"tz Asia/Tokyo, answer times [1211] (minutes since midnight)",14.93,3,1,1530,168,0,,get_current_datetime,get_current_datetime,What is the current local time in Tokyo?,"The current local time in Tokyo is Thursday, 2026-10-15 20:11 (UTC+09:00)."
+time-02,datetime,baseline,False,auto,no clock time in answer,8.97,1,0,26,312,0,,,get_current_datetime,What is the current local time in New York?,"I cannot provide the exact, real-time local time in New York because I do not have access to a live clock.
+
+To get the most accurate current time, please check a reliable source such as:
+
+*   A search engine (e.g., Google search for ""time in New York"").
+*   A world clock website.
+
+New York operates on **Eastern Time (ET)**, which observes Daylight Saving Time (EDT) during the warmer months and standard time (EST) during the winter."
+time-02,datetime,agent_full,True,auto,"tz America/New_York, answer times [431, 660] (minutes since midnight)",16.03,3,1,1605,167,0,,get_current_datetime,get_current_datetime,What is the current local time in New York?,"The current local time in New York is Thursday, October 15, 2026, at 7:11 AM (UTC-04:00)."
+time-03,datetime,baseline,False,auto,no clock time in answer,8.43,1,0,25,293,0,,,get_current_datetime,What is the current local time in London?,"I cannot provide the exact, real-time local time in London because I do not have access to a live clock.
+
+To get the current time, please check a reliable source such as:
+
+*   A search engine (e.g., Google search for ""time in London"").
+*   A world clock website.
+
+London observes **Greenwich Mean Time (GMT)** or **British Summer Time (BST)**, depending on the time of year."
+time-03,datetime,agent_full,True,auto,"tz Europe/London, answer times [12, 732] (minutes since midnight)",15.3,3,1,1545,160,0,,get_current_datetime,get_current_datetime,What is the current local time in London?,"The current local time in London is Thursday, 2026-10-15 12:12 (UTC+01:00)."
+time-04,datetime,baseline,False,auto,no clock time in answer,13.34,1,0,25,465,0,,,get_current_datetime,What is the current local time in Sydney?,"I cannot provide the exact, real-time clock time in Sydney because I do not have access to a live clock feed.
+
+However, I can tell you the time zone information so you can check it using a reliable search engine or time zone website:
+
+*   **Time Zone:** Australian Eastern Time (AET)
+*   **Standard Time (Non-DST):** Australian Eastern Standard Time (AEST), which is **UTC+10**.
+*   **Daylight Saving Time (DST):** Australian Eastern Daylight Time (AEDT), which is **UTC+11**.
+
+Please check a current time website for the most accurate local time."
+time-04,datetime,agent_full,True,auto,"tz Australia/Sydney, answer times [1332] (minutes since midnight)",17.16,3,1,1617,171,0,,get_current_datetime,get_current_datetime,What is the current local time in Sydney?,"The current local time in Sydney, Australia is Thursday, October 15, 2026, at 22:12 (UTC+11:00)."
+time-05,datetime,baseline,False,auto,no clock time in answer,8.93,1,0,25,310,0,,,get_current_datetime,What is the current local time in Dubai?,"I cannot provide you with the exact, real-time current local time in Dubai because I do not have access to a live clock.
+
+However, I can tell you that Dubai operates in the **Gulf Standard Time (GST)** time zone, which is **UTC+4**.
+
+To get the precise current time, please check a reliable search engine or a dedicated world clock website."
+time-05,datetime,agent_full,True,auto,"tz Asia/Dubai, answer times [912] (minutes since midnight)",14.73,3,1,1591,120,0,,get_current_datetime,get_current_datetime,What is the current local time in Dubai?,"The current local time in Dubai, United Arab Emirates is Thursday, October 15, 2026, at 15:12 (UTC+04:00)."
+time-06,datetime,baseline,False,auto,no clock time in answer,9.91,1,0,26,343,0,,,get_current_datetime,What is the current local time in Sao Paulo?,"I cannot provide the exact, real-time current time because I do not have access to a live clock.
+
+However, I can tell you that São Paulo operates in the **Brasília Time Zone (BRT)**, which is **UTC-3**.
+
+To get the precise, up-to-the-minute time, please check a reliable online clock or search engine using ""current time in São Paulo."""
+time-06,datetime,agent_full,True,auto,"tz America/Sao_Paulo, answer times [493, 1213] (minutes since midnight)",15.5,3,1,1625,123,0,,get_current_datetime,get_current_datetime,What is the current local time in Sao Paulo?,"The current local time in Sao Paulo, Brazil is Thursday, October 15, 2026, at 08:13 (UTC-03:00)."
+diff-01,time_difference,baseline,True,auto,expected 8 hours,18.54,1,0,35,644,0,,,time_difference,How many hours apart are the current local times in Baku and New York? Answer in hours.,"The time difference between Baku and New York depends on whether New York is observing Daylight Saving Time (DST).
+
+*   **If New York is observing Daylight Saving Time (EDT, UTC-4):** Baku is **8 hours** ahead of New York.
+*   **If New York is observing Standard Time (EST, UTC-5):** Baku is **9 hours** ahead of New York."
+diff-01,time_difference,agent_full,True,auto,expected 8 hours,20.27,3,1,1755,218,0,,time_difference,time_difference,How many hours apart are the current local times in Baku and New York? Answer in hours.,New York is 8 hours behind Baku.
+diff-02,time_difference,baseline,True,auto,expected 8 hours,15.64,1,0,34,544,0,,,time_difference,How many hours apart are the current local times in Tokyo and London? Answer in hours.,"The time difference between Tokyo and London varies depending on whether London is observing Daylight Saving Time (BST) or standard time (GMT).
+
+*   **If London is on GMT (UTC+0):** Tokyo is 9 hours ahead of London.
+*   **If London is on BST (UTC+1):** Tokyo is 8 hours ahead of London.
+
+Therefore, the difference is typically **8 or 9 hours**."
+diff-02,time_difference,agent_full,True,auto,expected 8 hours,18.16,3,1,1729,201,0,,time_difference,time_difference,How many hours apart are the current local times in Tokyo and London? Answer in hours.,Tokyo is 8 hours ahead of London.
+diff-03,time_difference,baseline,True,auto,expected 0.25 hours,10.1,1,0,34,352,0,,,time_difference,How many hours apart are the current local times in Delhi and Kathmandu? Answer in hours.,"Kathmandu is **0.25 hours** ahead of Delhi.
+
+(Nepal Standard Time is UTC+5:45, and Indian Standard Time is UTC+5:30.)"
+diff-03,time_difference,agent_full,True,auto,expected 0.25 hours,21.19,3,1,1753,248,0,,time_difference,time_difference,How many hours apart are the current local times in Delhi and Kathmandu? Answer in hours.,Kathmandu is 0.25 hours (or 15 minutes) ahead of Delhi.
+diff-04,time_difference,baseline,True,auto,expected 18 hours,16.04,1,0,35,556,0,,,time_difference,How many hours apart are the current local times in Sydney and Los Angeles? Answer in hours.,"The time difference between Sydney and Los Angeles is typically **18 hours**.
+
+(Sydney is ahead of Los Angeles.)"
+diff-04,time_difference,agent_full,True,auto,expected 18 hours,18.17,3,1,1712,205,0,,time_difference,time_difference,How many hours apart are the current local times in Sydney and Los Angeles? Answer in hours.,Los Angeles is 18 hours behind Sydney.
+diff-05,time_difference,baseline,True,auto,expected 1.5 hours,10.25,1,0,34,354,0,,,time_difference,How many hours apart are the current local times in Kolkata and Baku? Answer in hours.,"Kolkata (India) is in the Indian Standard Time (IST) zone, which is UTC+5:30.
+Baku (Azerbaijan) is in the Azerbaijan Standard Time (AZT) zone, which is UTC+4.
+
+The difference is 1.5 hours. (Kolkata is ahead of Baku)."
+diff-05,time_difference,agent_full,True,auto,expected 1.5 hours,19.27,3,1,1740,231,0,,time_difference,time_difference,How many hours apart are the current local times in Kolkata and Baku? Answer in hours.,Baku is 1.5 hours behind Kolkata.
+wx-01,weather,baseline,False,auto,"temperature_c: API 23.5 (±1.5), answer []",8.32,1,0,27,288,0,,,get_weather,What is the current temperature in Baku in degrees Celsius?,"I do not have access to real-time weather data, so I cannot tell you the current temperature in Baku right now.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather in Baku"")
+*   **AccuWeather**
+*   **The Weather Channel**
+*   **A dedicated weather app**"
+wx-01,weather,agent_full,True,auto,"temperature_c: API 23.5 (±1.5), answer [23.5]",15.43,3,1,1755,189,0,,get_weather,get_weather,What is the current temperature in Baku in degrees Celsius?,The current temperature in Baku is 23.5°C.
+wx-02,weather,baseline,False,auto,"temperature_c: API 14.4 (±1.5), answer []",8.46,1,0,27,289,0,,,get_weather,What is the current temperature in Berlin in degrees Celsius?,"I do not have access to real-time weather data, so I cannot tell you the current temperature in Berlin right now.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search** (by searching ""weather Berlin"")
+*   **A dedicated weather website** (like AccuWeather or Weather.com)
+*   **A weather app** on your phone"
+wx-02,weather,agent_full,True,auto,"temperature_c: API 14.4 (±1.5), answer [14.4]",17.35,3,1,1763,182,0,,get_weather,get_weather,What is the current temperature in Berlin in degrees Celsius?,The current temperature in Berlin is 14.4°C.
+wx-03,weather,baseline,False,auto,"temperature_c: API 2.2 (±1.5), answer []",8.41,1,0,27,285,0,,,get_weather,What is the current temperature in Reykjavik in degrees Celsius?,"I cannot provide you with the current, real-time temperature in Reykjavik because I do not have access to live weather data.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather in Reykjavik"")
+*   **AccuWeather**
+*   **The Weather Channel**
+*   **A dedicated weather app**"
+wx-03,weather,agent_full,True,auto,"temperature_c: API 2.2 (±1.5), answer [2.2]",15.69,3,1,1781,160,0,,get_weather,get_weather,What is the current temperature in Reykjavik in degrees Celsius?,The current temperature in Reykjavik is 2.2°C.
+wx-04,weather,baseline,False,auto,"humidity: API 27 (±6), answer []",8.9,1,0,27,300,0,,,get_weather,What is the current relative humidity in Cairo in percent?,"I do not have access to real-time, live weather data, so I cannot provide the current relative humidity in Cairo.
+
+To get the most accurate and up-to-date reading, please check a reliable weather website (such as AccuWeather, Weather.com, or a local meteorological service) or use a weather app."
+wx-04,weather,agent_full,True,auto,"humidity: API 27 (±6), answer [27.0]",22.92,3,1,1736,355,0,,get_weather,get_weather,What is the current relative humidity in Cairo in percent?,The current relative humidity in Cairo is 27%.
+wx-05,weather,baseline,False,auto,"wind_kmh: API 2.6 (±4), answer []",10.03,1,0,29,349,0,,,get_weather,What is the current wind speed in Tokyo in km/h?,"I do not have access to real-time, live weather data, so I cannot provide the current wind speed in Tokyo.
+
+To get the most accurate and up-to-date information, please check a reliable weather source such as:
+
+*   A dedicated weather website (e.g., AccuWeather, Weather.com).
+*   A local weather app on your phone.
+*   A search engine query for ""Tokyo wind speed."""
+wx-05,weather,agent_full,True,auto,"wind_kmh: API 2.6 (±4), answer [2.6]",23.75,3,1,1834,357,0,,get_weather,get_weather,What is the current wind speed in Tokyo in km/h?,The current wind speed in Tokyo is 2.6 km/h.
+wx-06,weather,baseline,False,auto,"temperature_c: API 20.3 (±1.5), answer []",8.5,1,0,27,296,0,,,get_weather,What is the current temperature in Lima in degrees Celsius?,"I cannot provide you with the current, real-time temperature in Lima. As an AI, I do not have access to live weather data.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather in Lima"")
+*   **AccuWeather**
+*   **The Weather Channel**
+*   **A dedicated weather app** on your phone."
+wx-06,weather,agent_full,True,auto,"temperature_c: API 20.3 (±1.5), answer [20.3]",17.05,3,1,1800,186,0,,get_weather,get_weather,What is the current temperature in Lima in degrees Celsius?,The current temperature in Lima is 20.3°C.
+web-01,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,4.33,1,0,28,139,0,,,web_search,Who is the current Secretary-General of the United Nations?,The current Secretary-General of the United Nations is **António Guterres**.
+web-01,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,25.06,3,1,2102,256,0,,web_search,web_search,Who is the current Secretary-General of the United Nations?,The current Secretary-General of the United Nations is **António Guterres**.
+web-02,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,3.9,1,0,24,129,0,,,web_search,Who is the current CEO of Microsoft?,The current CEO of Microsoft is **Satya Nadella**.
+web-02,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,22.14,3,1,2290,148,0,,web_search,web_search,Who is the current CEO of Microsoft?,The current CEO and Chairman of Microsoft is **Satya Nadella**.
+web-03,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,7.1,1,0,24,236,0,,,web_search,Who is the current CEO of Nvidia?,The current CEO of Nvidia is **Jensen Huang**.
+web-03,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,17.37,3,1,2203,165,0,,web_search,web_search,Who is the current CEO of Nvidia?,The current CEO of Nvidia is **Jensen Huang**.
+web-04,web_search,baseline,False,auto,keywords ['Rutte'] missing from answer,6.82,1,0,25,229,0,,,web_search,Who is the current Secretary General of NATO?,The current Secretary General of NATO is **Jens Stoltenberg**.
+web-04,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,28.14,3,1,2395,387,0,,web_search,web_search,Who is the current Secretary General of NATO?,The current Secretary General of NATO is **Mark Rutte**.
+web-05,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,5.35,1,0,26,177,0,,,web_search,Who is the current President of the European Commission?,The current President of the European Commission is **Ursula von der Leyen**.
+web-05,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,23.52,3,1,2128,156,0,,web_search,web_search,Who is the current President of the European Commission?,The current President of the European Commission is **Ursula von der Leyen**.
+web-06,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,9.71,1,0,24,332,0,,,web_search,Which company develops the LangGraph library?,"LangGraph is a library that is part of the **LangChain** ecosystem.
+
+While it is an open-source project maintained by a large community of contributors, the development and maintenance are primarily associated with the **LangChain team**."
+web-06,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,24.7,3,1,2102,213,0,,web_search,web_search,Which company develops the LangGraph library?,LangGraph is developed by **LangChain Inc.**
+web-07,web_search,baseline,False,human,needs human review. 4/5 salient terms also appear in the search results,5.23,1,0,28,169,0,,,web_search,Who won the most recent men's FIFA World Cup?,The winner of the most recent men's FIFA World Cup (the 2022 tournament) was **Argentina**.
+web-07,web_search,agent_full,True,human,needs human review. 5/5 salient terms also appear in the search results,94.77,6,2,7805,1297,1,,"web_search,web_search",web_search,Who won the most recent men's FIFA World Cup?,"Based on the specific information provided in the search results regarding the 2026 FIFA World Cup, the context states that **Spain** won the championship for the second time."
+web-08,web_search,baseline,False,human,needs human review. 4/4 salient terms also appear in the search results,14.24,1,0,26,489,0,,,web_search,What is the latest iPhone model Apple has released?,"As of my last update, the latest flagship iPhone models released by Apple are typically the ones announced in the fall.
+
+The current generation of flagship iPhones includes the **iPhone 15 series** (including the iPhone 15, iPhone 15 Plus, iPhone 15 Pro, and iPhone 15 Pro Max).
+
+**However, because Apple's product cycle is highly dynamic, I strongly recommend checking the official Apple website or a reliable tech news source for the absolute most current information, as new models or updates can be announced at any time.**"
+web-08,web_search,agent_full,True,human,needs human review. 2/3 salient terms also appear in the search results,26.24,3,1,2312,219,0,,web_search,web_search,What is the latest iPhone model Apple has released?,"Based on the search results, the latest iPhone models announced are the **iPhone 18 Pro**, **iPhone 18 Pro Max**, and **iPhone Duo**."
+multi-01,multi_tool,baseline,False,auto,"no clock time in answer | expected 442, answer numbers [442.0]",12.08,1,0,39,420,0,,,"get_current_datetime,calculator","What is the current local time in Tokyo, and what is 13% of 3400?","I cannot provide the current local time in Tokyo because I do not have real-time access to the internet or a clock. Please check a reliable online clock or search engine for the current time.
+
+However, I can calculate the percentage for you:
+
+13% of 3400 is **442**."
+multi-01,multi_tool,agent_full,True,auto,"tz Asia/Tokyo, answer times [1226] (minutes since midnight) | expected 442, answer numbers [2026.0, 10.0, 15.0, 20.0, 26.0, 9.0]",27.39,3,2,1724,443,0,,"get_current_datetime,calculator","get_current_datetime,calculator","What is the current local time in Tokyo, and what is 13% of 3400?","The current local time in Tokyo is Thursday, 2026-10-15 20:26 (UTC+09:00).
+
+13% of 3400 is 442.0."
+multi-02,multi_tool,baseline,False,auto,"temperature_c: API 43.2 (±3), answer [3.0, 3.0]",12.24,1,0,37,419,0,,,"get_weather,calculator","What is the current temperature in Berlin in degrees Celsius, and what is that temperature multiplied by 3?","I do not have access to real-time weather data, so I cannot provide the current temperature in Berlin.
+
+To get the answer, please check a reliable weather source for the current temperature (let's call it **T**).
+
+Once you have the temperature, you can calculate the second part by multiplying that number by 3:
+
+**Temperature in Berlin (T) $\times$ 3 = Your Answer**"
+multi-02,multi_tool,agent_full,True,auto,"temperature_c: API 43.2 (±3), answer [14.4, 3.0, 43.2]",26.28,4,2,2623,470,0,,"get_weather,calculator","get_weather,calculator","What is the current temperature in Berlin in degrees Celsius, and what is that temperature multiplied by 3?","The current temperature in Berlin is 14.4°C. Multiplied by 3, that temperature is 43.2."
+multi-03,multi_tool,baseline,False,auto,"temperature_c: API 18.4 (±1.5), answer [] | no clock time in answer",8.68,1,0,34,294,0,,,"get_weather,get_current_datetime","What is the current temperature in Tokyo in degrees Celsius, and what time is it there?","I cannot provide you with the current, real-time temperature or time in Tokyo because I do not have access to live weather feeds or clocks.
+
+To get the most accurate information, please check a reliable source such as:
+
+*   **Google Search/Weather App:** Search ""weather in Tokyo"" or ""time in Tokyo.""
+*   **Major Weather Websites:** (e.g., AccuWeather, BBC Weather).
+
+These sources will give you the current temperature in degrees Celsius and the precise local time."
+multi-03,multi_tool,agent_full,True,auto,"temperature_c: API 18.4 (±1.5), answer [18.4] | tz Asia/Tokyo, answer times [1227] (minutes since midnight)",28.19,3,2,2023,480,0,,"get_weather,get_current_datetime","get_weather,get_current_datetime","What is the current temperature in Tokyo in degrees Celsius, and what time is it there?","The current temperature in Tokyo is **18.4°C**.
+
+The current time in Tokyo is **Thursday, October 15, 2026, at 20:27 (UTC+09:00)**."
+multi-04,multi_tool,baseline,True,auto,"expected 5 hours | expected 8760, answer numbers [5.0, 8760.0]",12.03,1,0,42,416,0,,,"time_difference,calculator","How many hours apart are the current local times in Baku and Tokyo, and what is 365 * 24?","The current local times in Baku and Tokyo are **5 hours** apart (Tokyo is ahead of Baku).
+
+$365 \times 24$ equals **8,760**."
+multi-04,multi_tool,agent_full,True,auto,"expected 5 hours | expected 8760, answer numbers [5.0, 8760.0]",22.64,3,2,1784,353,0,,"time_difference,calculator","time_difference,calculator","How many hours apart are the current local times in Baku and Tokyo, and what is 365 * 24?","Tokyo is 5 hours ahead of Baku.
+
+365 multiplied by 24 is 8,760."
+multi-05,multi_tool,baseline,True,auto,"keywords found in answer and confirmed by search results | expected 13, answer numbers [13.0]",6.94,1,0,37,232,0,,,"web_search,calculator","Who is the current CEO of Microsoft, and what is 156 divided by 12?","The current CEO of Microsoft is **Satya Nadella**.
+
+156 divided by 12 is **13**."
+multi-05,multi_tool,agent_full,True,auto,"keywords found in answer and confirmed by search results | expected 13, answer numbers [13.0]",29.71,3,2,2584,339,0,,"web_search,calculator","web_search,calculator","Who is the current CEO of Microsoft, and what is 156 divided by 12?","The current CEO of Microsoft is **Satya Nadella**.
+
+156 divided by 12 is **13**."
+multi-06,multi_tool,baseline,False,auto,"temperature_c: API 28.8 (±1.5), answer [] | temperature_c: API 2.2 (±1.5), answer []",9.72,1,0,33,327,0,,,get_weather,"Which is warmer right now, Cairo or Reykjavik? Give both temperatures in degrees Celsius.","I cannot provide you with the current, real-time temperatures for Cairo and Reykjavik because I do not have access to live weather data. Weather changes constantly!
+
+To find out which is warmer right now, please check a reliable weather website or app (such as Google Weather, AccuWeather, or the local meteorological service) for the most accurate, up-to-the-minute readings for both cities."
+multi-06,multi_tool,agent_full,True,auto,"temperature_c: API 28.8 (±1.5), answer [28.8, 2.3] | temperature_c: API 2.2 (±1.5), answer [28.8, 2.3]",24.63,3,2,2237,325,0,,"get_weather,get_weather",get_weather,"Which is warmer right now, Cairo or Reykjavik? Give both temperatures in degrees Celsius.","Cairo is warmer right now.
+
+*   **Cairo:** 28.8°C
+*   **Reykjavik:** 2.3°C"
+know-01,knowledge,baseline,True,auto,keywords ['Tokyo'],0.44,1,0,23,9,0,,,,What is the capital of Japan?,The capital of Japan is **Tokyo**.
+know-01,knowledge,agent_full,True,auto,keywords ['Tokyo'],17.8,3,1,2051,119,0,,web_search,,What is the capital of Japan?,The capital of Japan is Tokyo.
+know-02,knowledge,baseline,True,auto,keywords ['Au'],0.38,1,0,24,10,0,,,,What is the chemical symbol for gold?,The chemical symbol for gold is **Au**.
+know-02,knowledge,agent_full,True,auto,keywords ['Au'],20.99,3,1,2911,239,0,,web_search,,What is the chemical symbol for gold?,The chemical symbol for gold is **Au**.
+know-03,knowledge,baseline,True,auto,keywords ['Austen'],3.52,1,0,24,119,0,,,,Who wrote the novel Pride and Prejudice?,Jane Austen wrote the novel *Pride and Prejudice*.
+know-03,knowledge,agent_full,True,auto,keywords ['Austen'],24.3,3,1,2118,159,0,,web_search,,Who wrote the novel Pride and Prejudice?,Jane Austen wrote the novel *Pride and Prejudice*.
+know-04,knowledge,baseline,True,auto,keywords ['Jupiter'],0.48,1,0,26,12,0,,,,What is the largest planet in our solar system?,The largest planet in our solar system is **Jupiter**.
+know-04,knowledge,agent_full,True,auto,keywords ['Jupiter'],20.06,3,1,2463,177,0,,web_search,,What is the largest planet in our solar system?,"The largest planet in our solar system is **Jupiter**.
+
+It is a gas giant with a mass and volume significantly greater than all the other planets combined."
+know-05,knowledge,baseline,True,auto,"keywords ['Leonardo', 'Vinci']",0.45,1,0,22,12,0,,,,Who painted the Mona Lisa?,The Mona Lisa was painted by **Leonardo da Vinci**.
+know-05,knowledge,agent_full,True,auto,"keywords ['Leonardo', 'Vinci']",29.2,3,1,2228,163,0,,web_search,,Who painted the Mona Lisa?,Leonardo da Vinci painted the Mona Lisa.
+know-06,knowledge,baseline,True,auto,"expected 100, answer numbers [100.0, 212.0]",4.95,1,0,31,170,0,,,,"At sea level, what is the boiling point of water in degrees Celsius?",The boiling point of water at sea level is **100 degrees Celsius** (or 212 degrees Fahrenheit).
+know-06,knowledge,agent_full,True,auto,"expected 100, answer numbers [100.0, 212.0]",26.81,3,1,2268,298,0,,web_search,,"At sea level, what is the boiling point of water in degrees Celsius?","At sea level, the boiling point of water is **100 degrees Celsius** (212 degrees Fahrenheit)."
