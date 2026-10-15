@@ -7,6 +7,7 @@ from rich.text import Text
 
 from src import sessions
 from src.graph import ask
+from src.memory import checkpointer                      # NEW
 from src.display import console, run_with_internals, VERDICT_STYLE
 
 
@@ -90,6 +91,13 @@ def resolve_session(args):
     return sessions.new_id(), None             # (change this to always start fresh if you prefer)
 
 
+def discard_unsaved(session_id: str, session_name):      # NEW
+    """A brand-new session that never got registered must not leave
+    orphan checkpoints behind in the database."""
+    if session_name is None:
+        checkpointer.delete_thread(session_id)
+
+
 def main():
     args = parse_args()
 
@@ -105,41 +113,59 @@ def main():
     label = f"[bold]{session_name}[/bold] ({session_id})" if session_name else "[bold]new session[/bold]"
     console.print(f"[bold]Agent ready.[/bold] Session: {label}. Internal messages: [bold]{mode}[/bold]. Type 'quit' to exit.")
 
-    while True:
-        q = console.input("\n[bold blue]You:[/bold blue] ")
-        if q.strip().lower() in ("quit", "exit"):
-            break
-        if not q.strip():
-            continue
+    try:                                                  # NEW: outer try for Ctrl+C / Ctrl+D
+        while True:
+            q = console.input("\n[bold blue]You:[/bold blue] ")
+            if q.strip().lower() in ("quit", "exit"):
+                break
+            if not q.strip():
+                continue
 
-        if args.internal:
-            answer, revisions, verdict = run_with_internals(q, session_id)
-        else:
-            with console.status("[bold cyan]thinking...", spinner="dots"):
-                answer, revisions, verdict = ask(q, session_id)
+            try:                                          # NEW: inner try for errors during a question
+                if args.internal:
+                    answer, revisions, verdict = run_with_internals(q, session_id)
+                else:
+                    with console.status("[bold cyan]thinking...", spinner="dots"):
+                        answer, revisions, verdict = ask(q, session_id)
+            except Exception as e:
+                console.print(Panel(
+                    Text(f"{type(e).__name__}: {e}", style="white"),
+                    title="[bold red]Error[/bold red]",
+                    title_align="left",
+                    subtitle="[dim]Is Ollama running? You can try the question again.[/dim]",
+                    subtitle_align="left",
+                    border_style="red",
+                    padding=(1, 2),
+                ))
+                discard_unsaved(session_id, session_name)
+                continue
 
-        style = VERDICT_STYLE.get(verdict, "white")
-        border = {"ok": "green", "retry": "red", "gave_up": "yellow"}.get(verdict, "white")
+            style = VERDICT_STYLE.get(verdict, "white")
+            border = {"ok": "green", "retry": "red", "gave_up": "yellow"}.get(verdict, "white")
 
-        console.print()
-        console.print(Panel(
-            Text(answer, style="white"),
-            title="[bold green]Agent[/bold green]",
-            title_align="left",
-            subtitle=f"[dim]self-check:[/dim] [{style}]{verdict or 'n/a'}[/{style}] [dim]| revisions: {revisions}[/dim]",
-            subtitle_align="left",
-            border_style=border,
-            padding=(1, 2),
-        ))
+            console.print()
+            console.print(Panel(
+                Text(answer, style="white"),
+                title="[bold green]Agent[/bold green]",
+                title_align="left",
+                subtitle=f"[dim]self-check:[/dim] [{style}]{verdict or 'n/a'}[/{style}] [dim]| revisions: {revisions}[/dim]",
+                subtitle_align="left",
+                border_style=border,
+                padding=(1, 2),
+            ))
 
-        # First question of a new session: let the agent name it, then save it
-        if session_name is None:
-            with console.status("[bold cyan]naming session...", spinner="dots"):
-                session_name = sessions.generate_name(q)
-            sessions.add(session_id, session_name)
-            console.print(f"[dim]Session saved as[/dim] [bold]{session_name}[/bold] [dim]({session_id})[/dim]")
-        else:
-            sessions.touch(session_id)
+            # First question of a new session: let the agent name it, then save it
+            if session_name is None:
+                with console.status("[bold cyan]naming session...", spinner="dots"):
+                    session_name = sessions.generate_name(q)
+                sessions.add(session_id, session_name)
+                console.print(f"[dim]Session saved as[/dim] [bold]{session_name}[/bold] [dim]({session_id})[/dim]")
+            else:
+                sessions.touch(session_id)
+
+    except (KeyboardInterrupt, EOFError):                 # NEW
+        discard_unsaved(session_id, session_name)
+        console.print("\n[dim]Bye.[/dim]")
 
 
 if __name__ == "__main__":
