@@ -13,7 +13,7 @@ leak into benchmark runs. Every question gets a fresh thread and an in-memory
 checkpointer, so the real database is never touched.
 """
 import time
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, field, asdict
 from uuid import uuid4
 
 from langchain_core.callbacks import BaseCallbackHandler
@@ -24,13 +24,16 @@ from src.graph import build_graph
 
 
 class Counter(BaseCallbackHandler):
-    """Counts model calls, tool calls and (best effort) tokens during one run."""
+    """Counts model calls, tool calls and (best effort) tokens during one run,
+    and records which tools ran and what they returned."""
 
     def __init__(self):
         self.llm_calls = 0
         self.tool_calls = 0
         self.input_tokens = 0
         self.output_tokens = 0
+        self.tools_used: list[str] = []
+        self.tool_outputs: list[str] = []
 
     def on_chat_model_start(self, serialized, messages, **kwargs):
         self.llm_calls += 1
@@ -40,6 +43,12 @@ class Counter(BaseCallbackHandler):
 
     def on_tool_start(self, serialized, input_str, **kwargs):
         self.tool_calls += 1
+        name = (serialized or {}).get("name") or kwargs.get("name") or "unknown"
+        self.tools_used.append(name)
+
+    def on_tool_end(self, output, **kwargs):
+        content = getattr(output, "content", output)
+        self.tool_outputs.append(str(content)[:1500])
 
     def on_llm_end(self, response, **kwargs):
         for generations in response.generations:
@@ -62,6 +71,8 @@ class RunResult:
     revisions: int = 0
     verdict: str = ""
     error: str = ""
+    tools_used: list = field(default_factory=list)
+    tool_outputs: list = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -130,6 +141,8 @@ def _fill(result: RunResult, counter: Counter) -> None:
     result.tool_calls = counter.tool_calls
     result.input_tokens = counter.input_tokens
     result.output_tokens = counter.output_tokens
+    result.tools_used = counter.tools_used
+    result.tool_outputs = counter.tool_outputs
 
 
 CONDITIONS = {
