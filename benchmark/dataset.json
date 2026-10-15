@@ -1,0 +1,688 @@
+[
+ {
+  "id": "calc-01",
+  "category": "calculator",
+  "question": "What is 4821 * 337 + 19?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 1624696,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-02",
+  "category": "calculator",
+  "question": "What is 123456 * 789?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 97406784,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-03",
+  "category": "calculator",
+  "question": "Calculate (1234 + 5678) * 91.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 628992,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-04",
+  "category": "calculator",
+  "question": "What is 2 to the power of 20?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 1048576,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-05",
+  "category": "calculator",
+  "question": "What is 98765 divided by 4321? Round to 2 decimal places.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 22.86,
+   "abs_tol": 0.01
+  }
+ },
+ {
+  "id": "calc-06",
+  "category": "calculator",
+  "question": "What is 17% of 2450?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 416.50000000000006,
+   "abs_tol": 0.01
+  }
+ },
+ {
+  "id": "calc-07",
+  "category": "calculator",
+  "question": "What is 7 to the power of 9?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 40353607,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-08",
+  "category": "calculator",
+  "question": "Compute (45.5 * 12.2) - 33.3.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 521.8,
+   "abs_tol": 0.01
+  }
+ },
+ {
+  "id": "calc-09",
+  "category": "calculator",
+  "question": "What is 999999 * 999999?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 999998000001,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "time-01",
+  "category": "datetime",
+  "question": "What is the current local time in Tokyo?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Asia/Tokyo",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-02",
+  "category": "datetime",
+  "question": "What is the current local time in New York?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "America/New_York",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-03",
+  "category": "datetime",
+  "question": "What is the current local time in London?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Europe/London",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-04",
+  "category": "datetime",
+  "question": "What is the current local time in Sydney?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Australia/Sydney",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-05",
+  "category": "datetime",
+  "question": "What is the current local time in Dubai?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Asia/Dubai",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-06",
+  "category": "datetime",
+  "question": "What is the current local time in Sao Paulo?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "America/Sao_Paulo",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "diff-01",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Baku and New York? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Baku",
+   "tz_b": "America/New_York"
+  }
+ },
+ {
+  "id": "diff-02",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Tokyo and London? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Tokyo",
+   "tz_b": "Europe/London"
+  }
+ },
+ {
+  "id": "diff-03",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Delhi and Kathmandu? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Kolkata",
+   "tz_b": "Asia/Kathmandu"
+  }
+ },
+ {
+  "id": "diff-04",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Sydney and Los Angeles? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Australia/Sydney",
+   "tz_b": "America/Los_Angeles"
+  }
+ },
+ {
+  "id": "diff-05",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Kolkata and Baku? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Kolkata",
+   "tz_b": "Asia/Baku"
+  }
+ },
+ {
+  "id": "wx-01",
+  "category": "weather",
+  "question": "What is the current temperature in Baku in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Baku",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-02",
+  "category": "weather",
+  "question": "What is the current temperature in Berlin in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Berlin",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-03",
+  "category": "weather",
+  "question": "What is the current temperature in Reykjavik in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Reykjavik",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-04",
+  "category": "weather",
+  "question": "What is the current relative humidity in Cairo in percent?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Cairo",
+   "field": "humidity",
+   "tol": 6
+  }
+ },
+ {
+  "id": "wx-05",
+  "category": "weather",
+  "question": "What is the current wind speed in Tokyo in km/h?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Tokyo",
+   "field": "wind_kmh",
+   "tol": 4
+  }
+ },
+ {
+  "id": "wx-06",
+  "category": "weather",
+  "question": "What is the current temperature in Lima in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Lima",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "web-01",
+  "category": "web_search",
+  "question": "Who is the current Secretary-General of the United Nations?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Guterres"
+   ],
+   "match": "any",
+   "query": "current Secretary-General of the United Nations"
+  }
+ },
+ {
+  "id": "web-02",
+  "category": "web_search",
+  "question": "Who is the current CEO of Microsoft?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Nadella"
+   ],
+   "match": "any",
+   "query": "Microsoft CEO"
+  }
+ },
+ {
+  "id": "web-03",
+  "category": "web_search",
+  "question": "Who is the current CEO of Nvidia?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Huang"
+   ],
+   "match": "any",
+   "query": "Nvidia CEO"
+  }
+ },
+ {
+  "id": "web-04",
+  "category": "web_search",
+  "question": "Who is the current Secretary General of NATO?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Rutte"
+   ],
+   "match": "any",
+   "query": "NATO Secretary General"
+  }
+ },
+ {
+  "id": "web-05",
+  "category": "web_search",
+  "question": "Who is the current President of the European Commission?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Leyen"
+   ],
+   "match": "any",
+   "query": "President of the European Commission"
+  }
+ },
+ {
+  "id": "web-06",
+  "category": "web_search",
+  "question": "Which company develops the LangGraph library?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "LangChain"
+   ],
+   "match": "any",
+   "query": "LangGraph library developer company"
+  }
+ },
+ {
+  "id": "web-07",
+  "category": "web_search",
+  "question": "Who won the most recent men's FIFA World Cup?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [],
+   "match": "any",
+   "query": "most recent men's FIFA World Cup winner"
+  }
+ },
+ {
+  "id": "web-08",
+  "category": "web_search",
+  "question": "What is the latest iPhone model Apple has released?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [],
+   "match": "any",
+   "query": "latest iPhone model released"
+  }
+ },
+ {
+  "id": "multi-01",
+  "category": "multi_tool",
+  "question": "What is the current local time in Tokyo, and what is 13% of 3400?",
+  "expected_tools": [
+   "get_current_datetime",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "time",
+     "tz": "Asia/Tokyo",
+     "tol_min": 3
+    },
+    {
+     "type": "numeric",
+     "expected": 442.0,
+     "abs_tol": 0.01
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-02",
+  "category": "multi_tool",
+  "question": "What is the current temperature in Berlin in degrees Celsius, and what is that temperature multiplied by 3?",
+  "expected_tools": [
+   "get_weather",
+   "calculator"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Berlin",
+   "field": "temperature_c",
+   "scale": 3,
+   "tol": 3
+  }
+ },
+ {
+  "id": "multi-03",
+  "category": "multi_tool",
+  "question": "What is the current temperature in Tokyo in degrees Celsius, and what time is it there?",
+  "expected_tools": [
+   "get_weather",
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "weather",
+     "city": "Tokyo",
+     "field": "temperature_c",
+     "tol": 1.5
+    },
+    {
+     "type": "time",
+     "tz": "Asia/Tokyo",
+     "tol_min": 3
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-04",
+  "category": "multi_tool",
+  "question": "How many hours apart are the current local times in Baku and Tokyo, and what is 365 * 24?",
+  "expected_tools": [
+   "time_difference",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "time_difference",
+     "tz_a": "Asia/Baku",
+     "tz_b": "Asia/Tokyo"
+    },
+    {
+     "type": "numeric",
+     "expected": 8760,
+     "abs_tol": 0.0
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-05",
+  "category": "multi_tool",
+  "question": "Who is the current CEO of Microsoft, and what is 156 divided by 12?",
+  "expected_tools": [
+   "web_search",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "search",
+     "keywords": [
+      "Nadella"
+     ],
+     "match": "any",
+     "query": "Microsoft CEO"
+    },
+    {
+     "type": "numeric",
+     "expected": 13.0,
+     "abs_tol": 0.01
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-06",
+  "category": "multi_tool",
+  "question": "Which is warmer right now, Cairo or Reykjavik? Give both temperatures in degrees Celsius.",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "weather",
+     "city": "Cairo",
+     "field": "temperature_c",
+     "tol": 1.5
+    },
+    {
+     "type": "weather",
+     "city": "Reykjavik",
+     "field": "temperature_c",
+     "tol": 1.5
+    }
+   ]
+  }
+ },
+ {
+  "id": "know-01",
+  "category": "knowledge",
+  "question": "What is the capital of Japan?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Tokyo"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-02",
+  "category": "knowledge",
+  "question": "What is the chemical symbol for gold?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Au"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-03",
+  "category": "knowledge",
+  "question": "Who wrote the novel Pride and Prejudice?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Austen"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-04",
+  "category": "knowledge",
+  "question": "What is the largest planet in our solar system?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Jupiter"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-05",
+  "category": "knowledge",
+  "question": "Who painted the Mona Lisa?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Leonardo",
+    "Vinci"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-06",
+  "category": "knowledge",
+  "question": "At sea level, what is the boiling point of water in degrees Celsius?",
+  "expected_tools": [],
+  "check": {
+   "type": "numeric",
+   "expected": 100,
+   "abs_tol": 0.0
+  }
+ }
+]
