@@ -5,7 +5,7 @@ from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
 
-from src import sessions
+from src import facts, sessions
 from src.graph import ask
 from src.memory import checkpointer
 from src.ollama_server import ensure_server
@@ -37,10 +37,14 @@ def parse_args():
                          help="list saved sessions and pick one to open")
     actions.add_argument("--remove-session", "-rm", dest="remove", metavar="ID_OR_NAME",
                          help="delete a session and exit")
+    actions.add_argument("--memory", "-m", action="store_true",
+                         help="show saved facts about you")
+    actions.add_argument("--forget", "-f", metavar="ID_OR_ALL",
+                         help="delete a saved fact by id, or 'all'")
     return parser.parse_args()
 
 
-def show_sessions() -> list[dict]:                        # NEW: numbered rows, returns the list
+def show_sessions() -> list[dict]:
     all_sessions = sessions.list_all()
     if not all_sessions:
         console.print("[dim]No saved sessions yet.[/dim]")
@@ -58,7 +62,7 @@ def show_sessions() -> list[dict]:                        # NEW: numbered rows, 
     return all_sessions
 
 
-def pick_session():                                       # NEW
+def pick_session():
     """Show the list and let the user open or delete a session.
     Returns the chosen session dict, or None to exit."""
     while True:
@@ -135,7 +139,7 @@ def discard_unsaved(session_id: str, session_name):
 def main():
     args = parse_args()
 
-    if args.list:                                         # NEW: pick instead of just printing
+    if args.list:                                         # pick instead of just printing
         try:
             chosen = pick_session()
         except (KeyboardInterrupt, EOFError):
@@ -146,6 +150,23 @@ def main():
         args.session = chosen["id"]                       # fall through to the normal chat startup
     if args.remove:
         remove_session(args.remove)
+        return
+    if args.memory:
+        rows = facts.all_facts()
+        if not rows:
+            console.print("[dim]No saved facts yet.[/dim]")
+        for r in rows:
+            console.print(f"[bold yellow]{r['id']}[/bold yellow]  {r['fact']}")
+        return
+    if args.forget:
+        if args.forget.lower() == "all":
+            facts.clear_facts()
+        elif args.forget.isdigit():
+            facts.delete_fact(int(args.forget))
+        else:
+            console.print("[bold red]Use a fact id or 'all'.[/bold red]")
+            return
+        console.print("[green]Done.[/green]")
         return
 
     try:
@@ -207,6 +228,13 @@ def main():
                 padding=(1, 2),
             ))
 
+            # Long-term memory: extract durable facts about the user
+            with console.status("[bold cyan]updating memory...", spinner="dots"):
+                new_facts = facts.extract_and_save(q, answer, session_id)
+            for f in new_facts:
+                console.print(f"[dim]remembered:[/dim] [italic]{f}[/italic]")
+
+            # First question of a new session: let the agent name it, then save it
             if session_name is None:
                 with console.status("[bold cyan]naming session...", spinner="dots"):
                     session_name = sessions.generate_name(q)
