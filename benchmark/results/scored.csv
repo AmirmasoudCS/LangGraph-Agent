@@ -293,3 +293,735 @@ know-05,knowledge,baseline,True,auto,"keywords ['Leonardo', 'Vinci']",0.45,1,0,2
 know-05,knowledge,agent_full,True,auto,"keywords ['Leonardo', 'Vinci']",29.2,3,1,2228,163,0,,web_search,,Who painted the Mona Lisa?,Leonardo da Vinci painted the Mona Lisa.
 know-06,knowledge,baseline,True,auto,"expected 100, answer numbers [100.0, 212.0]",4.95,1,0,31,170,0,,,,"At sea level, what is the boiling point of water in degrees Celsius?",The boiling point of water at sea level is **100 degrees Celsius** (or 212 degrees Fahrenheit).
 know-06,knowledge,agent_full,True,auto,"expected 100, answer numbers [100.0, 212.0]",26.81,3,1,2268,298,0,,web_search,,"At sea level, what is the boiling point of water in degrees Celsius?","At sea level, the boiling point of water is **100 degrees Celsius** (212 degrees Fahrenheit)."
+calc-10,calculator,baseline,True,auto,"expected 2.64919e+08, answer numbers [264919440.0]",33.7,1,0,31,1169,0,,,calculator,What is 93810 * 2824?,"To calculate $93810 \times 2824$, we multiply the two numbers:
+
+$$93810 \times 2824 = 264,919,440$$"
+calc-10,calculator,agent_full,True,auto,"expected 2.64919e+08, answer numbers [264919440.0]",6.24,3,1,1229,185,0,,calculator,calculator,What is 93810 * 2824?,"93810 * 2824 is 264,919,440."
+calc-11,calculator,baseline,True,auto,"expected 7.31087e+07, answer numbers [73108668.0]",17.78,1,0,31,621,0,,,calculator,What is 13278 * 5506?,"The product of 13278 and 5506 is **73,108,668**."
+calc-11,calculator,agent_full,True,auto,"expected 7.31087e+07, answer numbers [73108668.0]",6.18,3,1,1226,191,0,,calculator,calculator,What is 13278 * 5506?,"13278 * 5506 is 73,108,668."
+calc-12,calculator,baseline,True,auto,"expected 1.9605e+08, answer numbers [196050386.0]",23.79,1,0,31,828,0,,,calculator,What is 42098 * 4657?,"The product of 42098 and 4657 is **196,050,386**."
+calc-12,calculator,agent_full,True,auto,"expected 1.9605e+08, answer numbers [196050386.0]",6.14,3,1,1229,188,0,,calculator,calculator,What is 42098 * 4657?,"42098 * 4657 is 196,050,386."
+calc-13,calculator,baseline,True,auto,"expected 7.57862e+07, answer numbers [0.0, 0.0, 254601.0, 9.0, 1980230.0, 70.0]",38.08,1,0,31,1319,0,,,calculator,What is 28289 * 2679?,"To calculate $28289 \times 2679$, we multiply the numbers:
+
+$$
+\begin{array}{c}
+\phantom{00}28289 \\
+\times \quad 2679 \\
+\hline
+\phantom{0}254601 & (28289 \times 9) \\
+1980230 & (28289 \times 70) \\
+16973400 & (28289 \times 600) \\
+56578000 & (28289 \times 2000) \\
+\hline
+75786231 \\
+\end{array}
+$$
+
+The result is **75,786,231**."
+calc-13,calculator,agent_full,True,auto,"expected 7.57862e+07, answer numbers [75786231.0]",6.07,3,1,1226,186,0,,calculator,calculator,What is 28289 * 2679?,"28289 * 2679 is 75,786,231."
+calc-14,calculator,baseline,True,auto,"expected 9.80545e+08, answer numbers [980544760.0]",26.64,1,0,31,926,0,,,calculator,What is 98696 * 9935?,"The product of 98696 and 9935 is **980,544,760**."
+calc-14,calculator,agent_full,True,auto,"expected 9.80545e+08, answer numbers [980544760.0]",14.06,3,1,1492,194,0,,calculator,calculator,What is 98696 * 9935?,"98696 * 9935 is 980,544,760."
+calc-15,calculator,baseline,True,auto,"expected 3.47525e+07, answer numbers [1.0, 55604.0, 2.0, 55604.0, 55604.0, 34752500.0]",26.68,1,0,40,922,0,,,calculator,Calculate (48213 + 7391) * 625 - 18.,"This calculation requires following the order of operations (PEMDAS/BODMAS): first the parentheses, then multiplication, and finally subtraction.
+
+**1. Calculate the sum inside the parentheses:**
+$$48213 + 7391 = 55604$$
+
+**2. Multiply the result by 625:**
+$$55604 \times 625$$
+$$55604 \times 625 = 34,752,500$$
+
+**3. Subtract 18:**
+$$34,752,500 - 18 = 34,752,482$$
+
+The final answer is **34,752,482**."
+calc-15,calculator,agent_full,True,auto,"expected 3.47525e+07, answer numbers [34752482.0]",18.49,3,1,1675,196,0,,calculator,calculator,Calculate (48213 + 7391) * 625 - 18.,"34,752,482"
+calc-16,calculator,baseline,True,auto,"expected 858853, answer numbers [1.0, 553091.0, 2.0, 305762.0, 3.0, 553091.0]",22.6,1,0,37,785,0,,,calculator,Calculate 847 * 653 + 391 * 782.,"We need to calculate the value of the expression:
+$$847 \times 653 + 391 \times 782$$
+
+**Step 1: Calculate the first product ($847 \times 653$)**
+$$847 \times 653 = 553,091$$
+
+**Step 2: Calculate the second product ($391 \times 782$)**
+$$391 \times 782 = 305,762$$
+
+**Step 3: Add the results**
+$$553,091 + 305,762 = 858,853$$
+
+The final answer is **858,853**."
+calc-16,calculator,agent_full,True,auto,"expected 858853, answer numbers [858853.0]",104.67,7,1,5519,1265,2,,calculator,calculator,Calculate 847 * 653 + 391 * 782.,"I understand the constraint. I will ensure the final answer matches the result provided by the tool.
+
+The calculation is:
+$847 \times 653 + 391 \times 782 = 858,853$"
+calc-17,calculator,baseline,True,auto,"expected 268804, answer numbers [1.0, 4556.0, 2.0, 59.0, 3.0, 4556.0]",20.75,1,0,38,720,0,,,calculator,Calculate (9123 - 4567) * (38 + 21).,"This calculation requires following the order of operations (PEMDAS/BODMAS): first solve the expressions inside the parentheses, and then multiply the results.
+
+**1. Calculate the first parenthesis:**
+$$9123 - 4567 = 4556$$
+
+**2. Calculate the second parenthesis:**
+$$38 + 21 = 59$$
+
+**3. Multiply the results:**
+$$4556 \times 59$$
+
+$$4556 \times 59 = 268,804$$
+
+***
+The final answer is **268,804**."
+calc-17,calculator,agent_full,True,auto,"expected 268804, answer numbers [268804.0]",15.93,3,1,1555,204,0,,calculator,calculator,Calculate (9123 - 4567) * (38 + 21).,"268,804"
+calc-18,calculator,baseline,True,auto,"expected 7.93247e+06, answer numbers [1.0, 1841449.0, 6091024.0, 3.0, 1841449.0, 6091024.0]",20.19,1,0,35,700,0,,,calculator,Calculate 1357 ** 2 + 2468 ** 2.,"We need to calculate $1357^2 + 2468^2$.
+
+**1. Calculate $1357^2$:**
+$$1357^2 = 1,841,449$$
+
+**2. Calculate $2468^2$:**
+$$2468^2 = 6,091,024$$
+
+**3. Sum the results:**
+$$1,841,449 + 6,091,024 = 7,932,473$$
+
+The result is **7,932,473**."
+calc-18,calculator,agent_full,True,auto,"expected 7.93247e+06, answer numbers [7932473.0]",16.6,3,1,1576,207,0,,calculator,calculator,Calculate 1357 ** 2 + 2468 ** 2.,"1357² + 2468² = 7,932,473"
+calc-19,calculator,baseline,True,auto,"expected 144526, answer numbers [1.0, 2456934.0, 2456934.0, 2456934.0, 144525.5294, 3.0]",36.77,1,0,40,1270,0,,,calculator,Calculate (7654 * 321) / 17. Round to 2 decimal places.,"We need to calculate the value of the expression $(7654 \times 321) / 17$ and round the result to two decimal places.
+
+**Step 1: Calculate the product $7654 \times 321$.**
+$$7654 \times 321 = 2,456,934$$
+
+**Step 2: Divide the result by 17.**
+$$\frac{2,456,934}{17}$$
+
+Performing the division:
+$$2,456,934 \div 17 \approx 144,525.5294...$$
+
+**Step 3: Round to 2 decimal places.**
+We look at the third decimal place (9). Since 9 is 5 or greater, we round up the second decimal place (2).
+
+$$144,525.53$$
+
+The calculated value is **144,525.53**."
+calc-19,calculator,agent_full,True,auto,"expected 144526, answer numbers [144525.53]",23.66,3,1,1794,263,0,,calculator,calculator,Calculate (7654 * 321) / 17. Round to 2 decimal places.,144525.53
+calc-20,calculator,baseline,True,auto,"expected 14501.1, answer numbers [1.0, 1517.0, 1517.0, 1517.0, 101508.0, 3.0]",32.07,1,0,43,1113,0,,,calculator,Calculate (99991 + 37 * 41) / 7. Round to 2 decimal places.,"This calculation requires following the order of operations (PEMDAS/BODMAS).
+
+**1. Calculate the product inside the parentheses:**
+$$37 \times 41$$
+$$37 \times 41 = 1517$$
+
+**2. Calculate the sum inside the parentheses:**
+$$99991 + 1517$$
+$$99991 + 1517 = 101508$$
+
+**3. Perform the division:**
+$$\frac{101508}{7}$$
+$$101508 \div 7 \approx 14501.142857...$$
+
+**4. Round to 2 decimal places:**
+The third decimal place is 2, so we round down.
+
+$$14501.14$$"
+calc-20,calculator,agent_full,True,auto,"expected 14501.1, answer numbers [14501.14]",20.99,3,1,1718,261,0,,calculator,calculator,Calculate (99991 + 37 * 41) / 7. Round to 2 decimal places.,14501.14
+calc-21,calculator,baseline,True,auto,"expected 2.47795e+06, answer numbers [1.0, 2726784.0, 2.0, 248832.0, 3.0, 2726784.0]",28.44,1,0,35,987,0,,,calculator,Calculate 3456 * 789 - 12 ** 5.,"This calculation requires following the order of operations (PEMDAS/BODMAS): first exponentiation, then multiplication, and finally subtraction.
+
+**1. Calculate the multiplication:**
+$$3456 \times 789$$
+$$3456 \times 789 = 2,726,784$$
+
+**2. Calculate the exponent:**
+$$12^5$$
+$$12^5 = 12 \times 12 \times 12 \times 12 \times 12$$
+$$12^5 = 248,832$$
+
+**3. Subtract the results:**
+$$2,726,784 - 248,832$$
+$$2,726,784 - 248,832 = 2,477,952$$
+
+***
+The final answer is **2,477,952**."
+calc-21,calculator,agent_full,True,auto,"expected 2.47795e+06, answer numbers [2477952.0]",33.02,3,1,2162,184,0,,calculator,calculator,Calculate 3456 * 789 - 12 ** 5.,"2,477,952"
+calc-22,calculator,baseline,False,auto,"expected 1.79216e+12, answer numbers [10699323267631.0]",19.98,1,0,29,693,0,,,calculator,What is 13 to the power of 11?,"$13^{11}$ is a very large number.
+
+The exact value is:
+
+**10,699,323,267,631**
+
+(Ten trillion, six hundred ninety-nine billion, three hundred twenty-three million, two hundred sixty-seven thousand, six hundred thirty-one)"
+calc-22,calculator,agent_full,True,auto,"expected 1.79216e+12, answer numbers [1792160394037.0]",14.47,3,1,1526,175,0,,calculator,calculator,What is 13 to the power of 11?,"13 to the power of 11 is 1,792,160,394,037."
+calc-23,calculator,baseline,False,auto,"expected 4.74756e+12, answer numbers [4.747561509943692e+18]",12.49,1,0,28,434,0,,,calculator,What is 7 to the power of 15?,"$7^{15}$ is a very large number.
+
+The exact value is:
+
+**4,747,561,509,943,692,631**
+
+(Four quintillion, seven hundred forty-seven quadrillion, five hundred sixty-one trillion, five hundred nine billion, nine hundred forty-three million, six hundred ninety-two thousand, six hundred thirty-one)"
+calc-23,calculator,agent_full,True,auto,"expected 4.74756e+12, answer numbers [4747561509943.0]",13.9,3,1,1525,153,0,,calculator,calculator,What is 7 to the power of 15?,"7 to the power of 15 is 4,747,561,509,943."
+calc-24,calculator,baseline,False,auto,"expected 7.8311e+10, answer numbers [78352614201.0]",10.53,1,0,28,365,0,,,calculator,What is 23 to the power of 8?,"$23$ to the power of $8$ is:
+
+$$\mathbf{78,352,614,201}$$
+
+(Seventy-eight billion, three hundred fifty-two million, six hundred fourteen thousand, two hundred one)"
+calc-24,calculator,agent_full,True,auto,"expected 7.8311e+10, answer numbers [78310985281.0]",12.86,3,1,1487,150,0,,calculator,calculator,What is 23 to the power of 8?,"23 to the power of 8 is 78,310,985,281."
+calc-25,calculator,baseline,False,auto,"expected 2.01599e+12, answer numbers [2.003658786841665e+18, 2.0037, 18.0]",12.37,1,0,29,430,0,,,calculator,What is 17 to the power of 10?,"$17^{10}$ is a very large number.
+
+The exact value is:
+
+**2,003,658,786,841,664,961**
+
+***
+
+In scientific notation, this is approximately:
+
+$2.0037 \times 10^{18}$"
+calc-25,calculator,agent_full,True,auto,"expected 2.01599e+12, answer numbers [2015993900449.0]",14.87,3,1,1543,175,0,,calculator,calculator,What is 17 to the power of 10?,"17 to the power of 10 is 2,015,993,900,449."
+calc-26,calculator,baseline,True,auto,"expected 2002.65, answer numbers [0.237, 2002.65, 2002.65]",15.91,1,0,31,554,0,,,calculator,What is 23.7% of 8450?,"To find 23.7% of 8450, you can convert the percentage to a decimal and multiply:
+
+$$0.237 \times 8450$$
+
+$$2002.65$$
+
+**Answer:** 23.7% of 8450 is **2002.65**."
+calc-26,calculator,agent_full,True,auto,"expected 2002.65, answer numbers [2002.65]",15.83,3,1,1569,193,0,,calculator,calculator,What is 23.7% of 8450?,23.7% of 8450 is approximately 2002.65.
+calc-27,calculator,baseline,True,auto,"expected 1060.8, answer numbers [0.085, 0.085, 1060.8, 1060.8]",15.62,1,0,31,543,0,,,calculator,What is 8.5% of 12480?,"To find 8.5% of 12480, you can convert the percentage to a decimal and multiply:
+
+$$0.085 \times 12480$$
+
+$$0.085 \times 12480 = 1060.8$$
+
+**Answer:** 8.5% of 12480 is **1060.8**."
+calc-27,calculator,agent_full,True,auto,"expected 1060.8, answer numbers [1060.8]",15.3,3,1,1542,203,0,,calculator,calculator,What is 8.5% of 12480?,8.5% of 12480 is 1060.8.
+calc-28,calculator,baseline,True,auto,"expected 2170, answer numbers [1.0, 5.0, 8.0, 5.0, 8.0, 1.0]",21.22,1,0,31,737,0,,,calculator,What is 62.5% of 3472?,"To find 62.5% of 3472, you can use a couple of methods.
+
+### Method 1: Using Fractions (Easiest)
+
+Since $62.5\% = \frac{5}{8}$, you can calculate:
+$$\frac{5}{8} \times 3472$$
+
+1. **Divide 3472 by 8:**
+   $$3472 \div 8 = 434$$
+2. **Multiply the result by 5:**
+   $$434 \times 5 = 2170$$
+
+### Method 2: Using Decimals
+
+1. **Convert the percentage:**
+   $$62.5\% = 0.625$$
+2. **Multiply:**
+   $$3472 \times 0.625 = 2170$$
+
+***
+
+**Answer:** 62.5% of 3472 is **2170**."
+calc-28,calculator,agent_full,True,auto,"expected 2170, answer numbers [2170.0]",12.95,3,1,1464,174,0,,calculator,calculator,What is 62.5% of 3472?,62.5% of 3472 is 2170.
+calc-29,calculator,baseline,True,auto,"expected 25.3, answer numbers [25.299679, 6.0, 9.0, 25.3]",36.3,1,0,37,1253,0,,,calculator,What is 7919 divided by 313? Round to 3 decimal places.,"To find 7919 divided by 313, we perform the division:
+
+$$\frac{7919}{313} \approx 25.299679...$$
+
+Rounding the result to 3 decimal places:
+
+The fourth decimal place is 6, so we round up the third decimal place (9).
+
+$$25.300$$"
+calc-29,calculator,agent_full,True,auto,"expected 25.3, answer numbers [25.3]",15.19,3,1,1526,212,0,,calculator,calculator,What is 7919 divided by 313? Round to 3 decimal places.,25.300
+calc-30,calculator,baseline,False,auto,"expected 156.471, answer numbers [156.402911, 156.403]",9.49,1,0,39,327,0,,,calculator,What is 123456 divided by 789? Round to 3 decimal places.,"$$123456 \div 789 \approx 156.402911...$$
+
+Rounding to 3 decimal places, the answer is **156.403**."
+calc-30,calculator,agent_full,True,auto,"expected 156.471, answer numbers [156.471]",16.72,3,1,1580,240,0,,calculator,calculator,What is 123456 divided by 789? Round to 3 decimal places.,123456 divided by 789 is approximately **156.471**.
+time-07,datetime,baseline,False,auto,no clock time in answer,8.03,1,0,25,279,0,,,get_current_datetime,What is the current local time in Mumbai?,"I cannot provide the exact, real-time current local time in Mumbai because I do not have access to a live clock.
+
+However, I can tell you that Mumbai operates on **Indian Standard Time (IST)**, which is **UTC+5:30**.
+
+To get the precise current time, please check a reliable online clock or search engine using ""current time in Mumbai."""
+time-07,datetime,agent_full,True,auto,"tz Asia/Kolkata, answer times [1230] (minutes since midnight)",16.44,3,1,1657,116,0,,get_current_datetime,get_current_datetime,What is the current local time in Mumbai?,"The current local time in Mumbai is Thursday, October 15, 2026, at 8:30 PM (UTC+05:30)."
+time-08,datetime,baseline,False,auto,no clock time in answer,9.46,1,0,26,329,0,,,get_current_datetime,What is the current local time in Los Angeles?,"I cannot provide the exact, real-time current local time in Los Angeles because I do not have access to a live clock.
+
+To get the most accurate time, please check a reliable source such as:
+
+*   A search engine (Google, Bing, etc.)
+*   A dedicated world clock website
+*   Your phone or computer's clock
+
+Los Angeles operates in the **Pacific Time Zone (PT)**."
+time-08,datetime,agent_full,True,auto,"tz America/Los_Angeles, answer times [60, 481] (minutes since midnight)",17.3,3,1,1648,167,0,,get_current_datetime,get_current_datetime,What is the current local time in Los Angeles?,"The current local time in Los Angeles is Thursday, October 15, 2026, at 8:01 AM (UTC-07:00)."
+time-09,datetime,baseline,False,auto,no clock time in answer,8.24,1,0,25,283,0,,,get_current_datetime,What is the current local time in Paris?,"I cannot provide the exact, real-time current local time in Paris because I do not have access to a live clock.
+
+However, I can tell you that Paris operates in the **Central European Time (CET)** zone.
+
+To get the most accurate time, please check a reliable search engine or a dedicated time zone website."
+time-09,datetime,agent_full,True,auto,"tz Europe/Paris, answer times [1021] (minutes since midnight)",15.43,3,1,1561,163,0,,get_current_datetime,get_current_datetime,What is the current local time in Paris?,"The current local time in Paris is Thursday, October 15, 2026, at 17:01 (UTC+02:00)."
+time-10,datetime,baseline,False,auto,no clock time in answer,9.19,1,0,25,319,0,,,get_current_datetime,What is the current local time in Cairo?,"I cannot provide the exact, real-time current local time in Cairo because I do not have access to a live clock.
+
+However, I can tell you that Cairo operates in the **Egypt Standard Time (EET)** time zone, which is **UTC+2**.
+
+To get the precise current time, please check a reliable search engine or a dedicated time zone website."
+time-10,datetime,agent_full,True,auto,"tz Africa/Cairo, answer times [1082] (minutes since midnight)",17.47,3,1,1610,169,0,,get_current_datetime,get_current_datetime,What is the current local time in Cairo?,"The current local time in Cairo is Thursday, October 15, 2026, at 18:02 (UTC+03:00)."
+time-11,datetime,baseline,False,auto,no clock time in answer,9.64,1,0,25,336,0,,,get_current_datetime,What is the current local time in Johannesburg?,"I cannot provide you with the current, real-time clock time, as I do not have access to live clock data.
+
+However, I can tell you that Johannesburg, South Africa, operates in the **South Africa Standard Time (SAST)** time zone, which is **UTC+2**.
+
+To get the accurate, up-to-the-minute time, please check a reliable online clock or search engine."
+time-11,datetime,agent_full,True,auto,"tz Africa/Johannesburg, answer times [1022] (minutes since midnight)",13.2,3,1,1535,121,0,,get_current_datetime,get_current_datetime,What is the current local time in Johannesburg?,"The current local time in Johannesburg, South Africa is Thursday, October 15, 2026, at 17:02 (UTC+02:00)."
+time-12,datetime,baseline,False,auto,no clock time in answer,9.13,1,0,25,318,0,,,get_current_datetime,What is the current local time in Singapore?,"I cannot provide the exact, real-time clock time because I do not have access to live clock data.
+
+However, I can tell you that Singapore operates in the **Singapore Time (SGT)** time zone, which is **UTC+8**.
+
+To get the current time, please check a reliable source like Google Search or a dedicated time zone website."
+time-12,datetime,agent_full,True,auto,"tz Asia/Singapore, answer times [1383] (minutes since midnight)",13.79,3,1,1562,116,0,,get_current_datetime,get_current_datetime,What is the current local time in Singapore?,"The current local time in Singapore is Thursday, October 15, 2026, at 23:03 (UTC+08:00)."
+time-13,datetime,baseline,False,auto,no clock time in answer,9.02,1,0,25,314,0,,,get_current_datetime,What is the current local time in Moscow?,"I cannot provide the exact, real-time current local time in Moscow because I do not have access to a live clock.
+
+However, I can tell you that Moscow operates in the **Moscow Time (MSK)** zone, which is **UTC+3**.
+
+To get the precise current time, please check a reliable online clock or search engine using ""current time in Moscow."""
+time-13,datetime,agent_full,True,auto,"tz Europe/Moscow, answer times [1083] (minutes since midnight)",15.96,3,1,1613,116,0,,get_current_datetime,get_current_datetime,What is the current local time in Moscow?,"The current local time in Moscow is Thursday, October 15, 2026, at 18:03 (UTC+03:00)."
+time-14,datetime,baseline,False,auto,no clock time in answer,10.11,1,0,26,352,0,,,get_current_datetime,What is the current local time in Mexico City?,"I cannot provide the exact, real-time current local time in Mexico City because I do not have access to a live clock.
+
+To get the most accurate time, please check a reliable source such as:
+
+*   Google Search (by searching ""time in Mexico City"")
+*   A world clock website
+
+**For your information:** Mexico City operates in the Central Time Zone (CST/CDT)."
+time-14,datetime,agent_full,True,auto,"tz America/Mexico_City, answer times [180, 543] (minutes since midnight)",14.62,3,1,1560,121,0,,get_current_datetime,get_current_datetime,What is the current local time in Mexico City?,"The current local time in Mexico City is Thursday, October 15, 2026, at 9:03 AM (UTC-06:00)."
+time-15,datetime,baseline,False,auto,no clock time in answer,8.9,1,0,25,310,0,,,get_current_datetime,What is the current local time in Kathmandu?,"I cannot provide you with the current real-time local time in Kathmandu because I do not have access to a live clock.
+
+However, I can tell you that Kathmandu operates on **Nepal Standard Time (NPT)**, which is **UTC+5:45**.
+
+To get the accurate current time, please check a reliable online clock or search engine using ""current time in Kathmandu."""
+time-15,datetime,agent_full,True,auto,"tz Asia/Kathmandu, answer times [1249] (minutes since midnight)",15.82,3,1,1625,118,0,,get_current_datetime,get_current_datetime,What is the current local time in Kathmandu?,"The current local time in Kathmandu is Thursday, October 15, 2026, at 20:49 (UTC+05:45)."
+time-16,datetime,baseline,False,auto,no clock time in answer,10.99,1,0,25,382,0,,,get_current_datetime,What is the current local time in Adelaide?,"I cannot provide the exact, real-time current local time in Adelaide because I do not have access to a live clock.
+
+However, I can tell you that Adelaide, South Australia, observes the **Australian Central Time (ACST)** time zone.
+
+**Please check a reliable online source (like Google or a world clock website) for the most accurate current time.**
+
+*Note: Adelaide observes Daylight Saving Time (ACDT) during the warmer months.*"
+time-16,datetime,agent_full,True,auto,"tz Australia/Adelaide, answer times [94, 814] (minutes since midnight)",15.95,3,1,1620,120,0,,get_current_datetime,get_current_datetime,What is the current local time in Adelaide?,"The current local time in Adelaide, Australia is Friday, October 16, 2026, at 01:34 (UTC+10:30)."
+time-17,datetime,baseline,False,auto,no clock time in answer,10.25,1,0,25,355,0,,,get_current_datetime,What is the current local time in Auckland?,"I cannot provide the exact, real-time clock time for Auckland because I do not have access to live clock data.
+
+However, I can tell you the time zone information:
+
+*   **Auckland, New Zealand** observes the **New Zealand Time** zone.
+*   During standard time, it is **NZST** (UTC+12).
+*   During Daylight Saving Time (when observed), it is **NZDT** (UTC+13).
+
+**To get the current time, please check a reliable online clock or search engine and enter ""current time in Auckland"" for the most accurate result.**"
+time-17,datetime,agent_full,True,auto,"tz Pacific/Auckland, answer times [245, 965] (minutes since midnight)",18.6,3,1,1625,175,0,,get_current_datetime,get_current_datetime,What is the current local time in Auckland?,"The current local time in Auckland, New Zealand is Friday, October 16, 2026, at 04:05 (UTC+13:00)."
+time-18,datetime,baseline,False,auto,no clock time in answer,8.62,1,0,25,300,0,,,get_current_datetime,What is the current local time in Anchorage?,"I cannot provide the exact, real-time current local time in Anchorage because I do not have access to a live clock.
+
+To get the most accurate time, please check a reliable source like Google, a world clock website, or your phone's clock app.
+
+However, I can tell you that Anchorage operates in the **Alaska Time Zone (AKDT/AKST)**."
+time-18,datetime,agent_full,True,auto,"tz America/Anchorage, answer times [425, 1145] (minutes since midnight)",17.76,3,1,1602,172,0,,get_current_datetime,get_current_datetime,What is the current local time in Anchorage?,"The current local time in Anchorage is Thursday, October 15, 2026, at 07:05 (UTC-08:00)."
+time-19,datetime,baseline,False,auto,no clock time in answer,9.69,1,0,25,338,0,,,get_current_datetime,What is the current local time in Honolulu?,"I cannot provide you with the current, real-time local time in Honolulu because I do not have access to a live clock.
+
+However, I can tell you that Honolulu operates in the **Hawaii-Aleutian Standard Time (HST)** zone, which is **UTC-10:00**.
+
+To get the accurate current time, please check a reliable online clock or search engine."
+time-19,datetime,agent_full,True,auto,"tz Pacific/Honolulu, answer times [306, 360] (minutes since midnight)",14.63,3,1,1592,118,0,,get_current_datetime,get_current_datetime,What is the current local time in Honolulu?,"The current local time in Honolulu is Thursday, October 15, 2026, at 5:06 AM (UTC-10:00)."
+time-20,datetime,baseline,False,auto,no clock time in answer,10.77,1,0,25,373,0,,,get_current_datetime,What is the current local time in Tehran?,"I cannot provide the exact, real-time current local time in Tehran because I do not have access to a live clock.
+
+However, I can tell you that Tehran operates in the **Iran Standard Time (IRST)**, which is **UTC+3:30**.
+
+To get the precise, up-to-the-second time, please check a reliable online time zone converter or search engine."
+time-20,datetime,agent_full,True,auto,"tz Asia/Tehran, answer times [1116] (minutes since midnight)",15.03,3,1,1600,118,0,,get_current_datetime,get_current_datetime,What is the current local time in Tehran?,"The current local time in Tehran is Thursday, October 15, 2026, at 18:36 (UTC+03:30)."
+diff-06,time_difference,baseline,True,auto,expected 4.75 hours,25.25,1,0,34,876,0,,,time_difference,How many hours apart are the current local times in Adelaide and Kathmandu? Answer in hours.,"The time difference between Adelaide and Kathmandu depends on whether Adelaide is observing Daylight Saving Time (DST).
+
+Here are the two possibilities:
+
+1.  **If Adelaide is on Standard Time (ACST, UTC+9:30):**
+    The difference is **3.75 hours** (3 hours and 45 minutes).
+
+2.  **If Adelaide is on Daylight Saving Time (ACDT, UTC+10:30):**
+    The difference is **4.75 hours** (4 hours and 45 minutes).
+
+***
+
+*(Note: Kathmandu is always on Nepal Standard Time, UTC+5:45.)*"
+diff-06,time_difference,agent_full,True,auto,expected 4.75 hours,20.4,3,1,1708,274,0,,time_difference,time_difference,How many hours apart are the current local times in Adelaide and Kathmandu? Answer in hours.,Kathmandu is 4.75 hours behind Adelaide.
+diff-07,time_difference,baseline,False,auto,expected 1 hours,11.28,1,0,34,391,0,,,time_difference,How many hours apart are the current local times in Tehran and Kabul? Answer in hours.,"The current local times in Tehran and Kabul are **0.5** hours apart.
+
+(Kabul is 30 minutes ahead of Tehran.)"
+diff-07,time_difference,agent_full,True,auto,expected 1 hours,24.03,3,1,1811,201,0,,time_difference,time_difference,How many hours apart are the current local times in Tehran and Kabul? Answer in hours.,Kabul is 1 hour ahead of Tehran.
+diff-08,time_difference,baseline,True,auto,expected 12 hours,26.19,1,0,34,909,0,,,time_difference,How many hours apart are the current local times in Auckland and London? Answer in hours.,"The time difference between Auckland and London varies depending on the time of year because both locations observe Daylight Saving Time (DST) at different times.
+
+Therefore, the difference can be **11 hours** or **12 hours**.
+
+*   **12 hours difference:** This is the most common difference when both locations are observing their respective DST or standard times.
+*   **11 hours difference:** This occurs during specific periods when one location is on DST and the other is not.
+
+***
+
+*(Note: To get the exact current difference, you would need to check a real-time clock service for today's date.)*"
+diff-08,time_difference,agent_full,True,auto,expected 12 hours,20.77,3,1,1741,202,0,,time_difference,time_difference,How many hours apart are the current local times in Auckland and London? Answer in hours.,London is 12 hours behind Auckland.
+diff-09,time_difference,baseline,True,auto,expected 2 hours,21.62,1,0,34,752,0,,,time_difference,How many hours apart are the current local times in Anchorage and Honolulu? Answer in hours.,"The time difference between Anchorage and Honolulu is **1 to 2 hours**, depending on whether Alaska is observing Daylight Saving Time (DST).
+
+*   **During Daylight Saving Time (March to November):** Anchorage is **2 hours** ahead of Honolulu.
+*   **During Standard Time (November to March):** Anchorage is **1 hour** ahead of Honolulu."
+diff-09,time_difference,agent_full,True,auto,expected 2 hours,20.92,3,1,1771,194,0,,time_difference,time_difference,How many hours apart are the current local times in Anchorage and Honolulu? Answer in hours.,Honolulu is 2 hours behind Anchorage.
+diff-10,time_difference,baseline,False,auto,expected 0 hours,19.98,1,0,34,696,0,,,time_difference,How many hours apart are the current local times in Cairo and Moscow? Answer in hours.,"The time difference between Cairo and Moscow is typically **1 hour**, with Moscow being ahead of Cairo.
+
+***
+
+**Important Note on Daylight Saving Time (DST):**
+
+This difference can occasionally change depending on whether both countries are observing Daylight Saving Time (DST) at the same time.
+
+*   **Standard Difference:** 1 hour (Moscow is ahead).
+*   **If both are on DST:** The difference could temporarily be 2 hours.
+
+For the most accurate time, please check a real-time clock service for both locations."
+diff-10,time_difference,agent_full,True,auto,expected 0 hours,20.46,3,1,1772,190,0,,time_difference,time_difference,How many hours apart are the current local times in Cairo and Moscow? Answer in hours.,"They are in the same time zone, so they are 0 hours apart."
+diff-11,time_difference,baseline,True,auto,expected 8 hours,20.08,1,0,34,700,0,,,time_difference,How many hours apart are the current local times in Denver and Berlin? Answer in hours.,"The current local times in Denver and Berlin are typically **8 hours** apart.
+
+(Berlin is ahead of Denver.)"
+diff-11,time_difference,agent_full,True,auto,expected 8 hours,19.9,3,1,1712,200,0,,time_difference,time_difference,How many hours apart are the current local times in Denver and Berlin? Answer in hours.,Berlin is 8 hours ahead of Denver.
+diff-12,time_difference,baseline,True,auto,expected 5.5 hours,17.19,1,0,34,600,0,,,time_difference,How many hours apart are the current local times in Mumbai and Sydney? Answer in hours.,"The time difference between Mumbai and Sydney varies depending on whether Sydney is observing Daylight Saving Time (DST).
+
+Therefore, the difference is either **4.5 hours** or **5.5 hours**.
+
+*   **Sydney is 5.5 hours ahead of Mumbai** (when Sydney is observing Daylight Saving Time, typically from late October to early April).
+*   **Sydney is 4.5 hours ahead of Mumbai** (when Sydney is observing Standard Time)."
+diff-12,time_difference,agent_full,True,auto,expected 5.5 hours,19.37,3,1,1691,250,0,,time_difference,time_difference,How many hours apart are the current local times in Mumbai and Sydney? Answer in hours.,Sydney is 5.5 hours ahead of Mumbai.
+diff-13,time_difference,baseline,True,auto,expected 15 hours,20.28,1,0,35,705,0,,,time_difference,How many hours apart are the current local times in Singapore and Los Angeles? Answer in hours.,"The time difference between Singapore and Los Angeles is **15 or 16 hours**, depending on whether Los Angeles is observing Daylight Saving Time (PDT) or Standard Time (PST).
+
+*   **If Los Angeles is observing Daylight Saving Time (PDT):** The difference is **15 hours**.
+*   **If Los Angeles is observing Standard Time (PST):** The difference is **16 hours**."
+diff-13,time_difference,agent_full,True,auto,expected 15 hours,19.51,3,1,1715,205,0,,time_difference,time_difference,How many hours apart are the current local times in Singapore and Los Angeles? Answer in hours.,Los Angeles is 15 hours behind Singapore.
+diff-14,time_difference,baseline,True,auto,expected 6 hours,12.4,1,0,35,430,0,,,time_difference,How many hours apart are the current local times in Paris and New York? Answer in hours.,"The current local times in Paris and New York are typically **6** hours apart.
+
+(Paris is generally 6 hours ahead of New York.)"
+diff-14,time_difference,agent_full,True,auto,expected 6 hours,22.28,3,1,1738,202,0,,time_difference,time_difference,How many hours apart are the current local times in Paris and New York? Answer in hours.,New York is 6 hours behind Paris.
+diff-15,time_difference,baseline,True,auto,expected 7 hours,7.8,1,0,34,269,0,,,time_difference,How many hours apart are the current local times in Johannesburg and Tokyo? Answer in hours.,Tokyo is 7 hours ahead of Johannesburg.
+diff-15,time_difference,agent_full,True,auto,expected 7 hours,21.68,3,1,1788,201,0,,time_difference,time_difference,How many hours apart are the current local times in Johannesburg and Tokyo? Answer in hours.,Tokyo is 7 hours ahead of Johannesburg.
+diff-16,time_difference,baseline,False,auto,expected 8 hours,20.29,1,0,35,703,0,,,time_difference,How many hours apart are the current local times in Mexico City and Madrid? Answer in hours.,"The time difference between Mexico City and Madrid is **variable** because both locations observe Daylight Saving Time (DST) at different times and follow different rules.
+
+However, generally speaking, Madrid is ahead of Mexico City by either **6 hours** or **7 hours**.
+
+*   **7 hours difference:** This is the difference when both locations are on standard time (or when the DST difference is maximized).
+*   **6 hours difference:** This is the difference when both locations are observing Daylight Saving Time (or when the DST difference is minimized).
+
+**To get the exact answer, you must check a real-time clock service for today's date, as the difference changes twice a year.**"
+diff-16,time_difference,agent_full,True,auto,expected 8 hours,21.52,3,1,1759,206,0,,time_difference,time_difference,How many hours apart are the current local times in Mexico City and Madrid? Answer in hours.,Madrid is 8 hours ahead of Mexico City.
+diff-17,time_difference,baseline,True,auto,expected 8 hours,19.13,1,0,34,668,0,,,time_difference,How many hours apart are the current local times in Dubai and Toronto? Answer in hours.,"The time difference between Dubai and Toronto depends on whether Toronto is observing Daylight Saving Time (DST).
+
+1.  **If Toronto is observing Daylight Saving Time (EDT, UTC-4):**
+    *   Dubai (UTC+4) is **8 hours** ahead of Toronto.
+
+2.  **If Toronto is on Standard Time (EST, UTC-5):**
+    *   Dubai (UTC+4) is **9 hours** ahead of Toronto.
+
+***
+
+**In summary, the difference is either 8 or 9 hours.**"
+diff-17,time_difference,agent_full,True,auto,expected 8 hours,19.88,3,1,1714,196,0,,time_difference,time_difference,How many hours apart are the current local times in Dubai and Toronto? Answer in hours.,Toronto is 8 hours behind Dubai.
+diff-18,time_difference,baseline,True,auto,expected 10 hours,20.33,1,0,34,709,0,,,time_difference,How many hours apart are the current local times in Istanbul and Vancouver? Answer in hours.,"The time difference between Istanbul and Vancouver depends on whether Daylight Saving Time (DST) is currently observed in Vancouver.
+
+1.  **Istanbul** is in the UTC+3 time zone.
+2.  **Vancouver** is in the Pacific Time zone (PST/PDT).
+
+Therefore, the difference is either **10 hours** or **11 hours**:
+
+*   **If Vancouver is observing Daylight Saving Time (PDT, UTC-7):** The difference is **10 hours**. (Istanbul is 10 hours ahead of Vancouver.)
+*   **If Vancouver is observing Standard Time (PST, UTC-8):** The difference is **11 hours**. (Istanbul is 11 hours ahead of Vancouver.)"
+diff-18,time_difference,agent_full,True,auto,expected 10 hours,20.97,3,1,1750,196,0,,time_difference,time_difference,How many hours apart are the current local times in Istanbul and Vancouver? Answer in hours.,Vancouver is 10 hours behind Istanbul.
+diff-19,time_difference,baseline,False,auto,expected 3.5 hours,17.01,1,0,34,590,0,,,time_difference,How many hours apart are the current local times in Bangkok and Adelaide? Answer in hours.,"The current local times in Bangkok and Adelaide are typically **2.5 hours** apart.
+
+(Bangkok is 2.5 hours behind Adelaide.)"
+diff-19,time_difference,agent_full,True,auto,expected 3.5 hours,20.91,3,1,1701,249,0,,time_difference,time_difference,How many hours apart are the current local times in Bangkok and Adelaide? Answer in hours.,Adelaide is 3.5 hours ahead of Bangkok.
+diff-20,time_difference,baseline,True,auto,expected 12 hours,19.11,1,0,34,662,0,,,time_difference,How many hours apart are the current local times in Lagos and Auckland? Answer in hours.,"The time difference between Lagos and Auckland depends on whether Auckland is observing Daylight Saving Time (DST).
+
+*   **If Auckland is on Standard Time (NZST):** The difference is **11 hours**. (Auckland is 11 hours ahead of Lagos).
+*   **If Auckland is on Daylight Saving Time (NZDT):** The difference is **12 hours**. (Auckland is 12 hours ahead of Lagos).
+
+***
+
+*(Note: Lagos observes West Africa Time (WAT), which is UTC+1. Auckland's offset changes between UTC+12 and UTC+13.)*"
+diff-20,time_difference,agent_full,True,auto,expected 12 hours,20.64,3,1,1785,211,0,,time_difference,time_difference,How many hours apart are the current local times in Lagos and Auckland? Answer in hours.,Auckland is 12 hours ahead of Lagos.
+wx-07,weather,baseline,False,auto,"temperature_c: API 14 (±1.5), answer []",8.61,1,0,27,291,0,,,get_weather,What is the current temperature in Oslo in degrees Celsius?,"I cannot provide you with the current, real-time temperature in Oslo. I do not have access to live weather data.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search** (by searching ""weather Oslo"")
+*   **AccuWeather**
+*   **The Norwegian Meteorological Institute (MET Norway)**
+*   A dedicated weather app on your phone."
+wx-07,weather,agent_full,True,auto,"temperature_c: API 14 (±1.5), answer [14.0]",17.99,3,1,1793,159,0,,get_weather,get_weather,What is the current temperature in Oslo in degrees Celsius?,The current temperature in Oslo is 14.0°C.
+wx-08,weather,baseline,False,auto,"temperature_c: API 22.3 (±1.5), answer []",8.68,1,0,27,294,0,,,get_weather,What is the current temperature in Nairobi in degrees Celsius?,"I do not have access to real-time weather data, so I cannot tell you the current temperature in Nairobi right now.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather in Nairobi"")
+*   **AccuWeather**
+*   **The World Meteorological Organization (WMO)**
+*   **A dedicated weather app** on your phone."
+wx-08,weather,agent_full,True,auto,"temperature_c: API 22.3 (±1.5), answer [22.3]",16.66,3,1,1786,177,0,,get_weather,get_weather,What is the current temperature in Nairobi in degrees Celsius?,The current temperature in Nairobi is 22.3°C.
+wx-09,weather,baseline,False,auto,"temperature_c: API 16.4 (±1.5), answer []",8.81,1,0,27,295,0,,,get_weather,What is the current temperature in Seoul in degrees Celsius?,"I cannot provide you with the current, real-time temperature in Seoul because I do not have access to live weather data.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather in Seoul"")
+*   **AccuWeather**
+*   **The Korea Meteorological Administration (KMA)**
+*   **A dedicated weather app** on your phone."
+wx-09,weather,agent_full,True,auto,"temperature_c: API 16.4 (±1.5), answer [16.4]",18.35,3,1,1793,156,0,,get_weather,get_weather,What is the current temperature in Seoul in degrees Celsius?,The current temperature in Seoul is 16.4°C.
+wx-10,weather,baseline,False,auto,"temperature_c: API 25.3 (±1.5), answer []",8.35,1,0,27,284,0,,,get_weather,What is the current temperature in Madrid in degrees Celsius?,"I cannot provide you with the current, real-time temperature in Madrid because I do not have access to live weather data.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search ""weather in Madrid"")
+*   **AccuWeather**
+*   **The Weather Channel**
+*   **A dedicated weather app**"
+wx-10,weather,agent_full,True,auto,"temperature_c: API 25.3 (±1.5), answer [25.3]",17.44,3,1,1773,168,0,,get_weather,get_weather,What is the current temperature in Madrid in degrees Celsius?,The current temperature in Madrid is 25.3°C.
+wx-11,weather,baseline,False,auto,"temperature_c: API 17.2 (±1.5), answer []",8.62,1,0,28,289,0,,,get_weather,What is the current temperature in Cape Town in degrees Celsius?,"I cannot provide you with the current, real-time temperature in Cape Town because I do not have access to live weather data.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather in Cape Town"")
+*   **AccuWeather**
+*   **The Weather Channel**
+*   **A dedicated weather app**"
+wx-11,weather,agent_full,True,auto,"temperature_c: API 17.2 (±1.5), answer [17.2]",16.84,3,1,1797,162,0,,get_weather,get_weather,What is the current temperature in Cape Town in degrees Celsius?,The current temperature in Cape Town is 17.2°C.
+wx-12,weather,baseline,False,auto,"temperature_c: API 28 (±1.5), answer []",8.6,1,0,27,294,0,,,get_weather,What is the current temperature in Singapore in degrees Celsius?,"I cannot provide you with the current, real-time temperature in Singapore because I do not have access to live weather data.
+
+To get the most accurate and up-to-date temperature, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather Singapore"")
+*   **AccuWeather**
+*   **The World Meteorological Organization (WMO)**
+*   **A dedicated weather app** on your phone."
+wx-12,weather,agent_full,True,auto,"temperature_c: API 28 (±1.5), answer [28.0]",17.69,3,1,1789,183,0,,get_weather,get_weather,What is the current temperature in Singapore in degrees Celsius?,The current temperature in Singapore is 28.0°C.
+wx-13,weather,baseline,False,auto,"humidity: API 62 (±6), answer []",8.06,1,0,27,272,0,,,get_weather,What is the current relative humidity in Berlin in percent?,"I do not have access to real-time, live weather data. To get the current relative humidity in Berlin, please check a reliable weather website (like AccuWeather, Weather.com, or a local German weather service) or use a weather app."
+wx-13,weather,agent_full,True,auto,"humidity: API 62 (±6), answer [62.0]",22.26,3,1,1774,355,0,,get_weather,get_weather,What is the current relative humidity in Berlin in percent?,The current relative humidity in Berlin is 62%.
+wx-14,weather,baseline,False,auto,"humidity: API 59 (±6), answer []",8.83,1,0,27,301,0,,,get_weather,What is the current relative humidity in Mumbai in percent?,"I do not have access to real-time weather data, so I cannot provide the current relative humidity in Mumbai.
+
+To get the most accurate and up-to-date reading, please check a reliable weather source such as:
+
+*   **Google Weather**
+*   **AccuWeather**
+*   **The India Meteorological Department (IMD)**
+*   **A local weather app**"
+wx-14,weather,agent_full,True,auto,"humidity: API 59 (±6), answer [59.0]",22.91,3,1,1760,348,0,,get_weather,get_weather,What is the current relative humidity in Mumbai in percent?,The current relative humidity in Mumbai is 59%.
+wx-15,weather,baseline,False,auto,"humidity: API 86 (±6), answer []",9.89,1,0,27,333,0,,,get_weather,What is the current relative humidity in Oslo in percent?,"I cannot provide you with the current, real-time relative humidity in Oslo because I do not have access to live weather data.
+
+To get the most accurate and up-to-date reading, please check a reliable weather website or app, such as:
+
+*   **Yr.no** (The official Norwegian weather service)
+*   **AccuWeather**
+*   **The Weather Channel**
+
+These sources will provide the current humidity percentage for Oslo."
+wx-15,weather,agent_full,True,auto,"humidity: API 86 (±6), answer [86.0]",22.49,3,1,1770,358,0,,get_weather,get_weather,What is the current relative humidity in Oslo in percent?,The current relative humidity in Oslo is 86%.
+wx-16,weather,baseline,False,auto,"humidity: API 56 (±6), answer []",7.94,1,0,27,268,0,,,get_weather,What is the current relative humidity in Vienna in percent?,"I do not have access to real-time weather data, so I cannot tell you the current relative humidity in Vienna.
+
+To get the most accurate and up-to-date reading, please check a reliable weather website (like AccuWeather, Weather.com, or a local Austrian weather service) or use a weather app."
+wx-16,weather,agent_full,True,auto,"humidity: API 56 (±6), answer [56.0]",22.54,3,1,1736,353,0,,get_weather,get_weather,What is the current relative humidity in Vienna in percent?,The current relative humidity in Vienna is 56%.
+wx-17,weather,baseline,False,auto,"humidity: API 75 (±6), answer []",8.85,1,0,27,302,0,,,get_weather,What is the current relative humidity in Sydney in percent?,"I do not have access to real-time, live weather data, so I cannot provide the current relative humidity in Sydney.
+
+To get the most accurate and up-to-date reading, please check a reliable weather website (like the Bureau of Meteorology for Australia) or a weather app."
+wx-17,weather,agent_full,True,auto,"humidity: API 75 (±6), answer [75.0]",22.32,3,1,1776,358,0,,get_weather,get_weather,What is the current relative humidity in Sydney in percent?,The current relative humidity in Sydney is 75%.
+wx-18,weather,baseline,False,auto,"humidity: API 77 (±6), answer []",9.73,1,0,27,325,0,,,get_weather,What is the current relative humidity in Toronto in percent?,"I do not have access to real-time, live weather data, so I cannot provide the current relative humidity in Toronto.
+
+To get the most accurate and up-to-date reading, please check a reliable weather website (like Environment Canada, AccuWeather, or Weather.com) or use a local weather app."
+wx-18,weather,agent_full,True,auto,"humidity: API 77 (±6), answer [77.0]",21.75,3,1,1758,352,0,,get_weather,get_weather,What is the current relative humidity in Toronto in percent?,The current relative humidity in Toronto is 77%.
+wx-19,weather,baseline,False,auto,"wind_kmh: API 7.9 (±4), answer []",10.05,1,0,29,345,0,,,get_weather,What is the current wind speed in Reykjavik in km/h?,"I cannot provide you with the current, real-time wind speed in Reykjavik, as I do not have access to live weather data.
+
+To get the most accurate and up-to-date information, please check a reliable weather source such as:
+
+*   **The Icelandic Meteorological Office (Veðurstofa Íslands)**
+*   **A major weather website (like AccuWeather or Weather.com)**
+*   **A dedicated weather app on your phone**"
+wx-19,weather,agent_full,True,auto,"wind_kmh: API 7.9 (±4), answer [7.9]",21.05,3,1,1723,365,0,,get_weather,get_weather,What is the current wind speed in Reykjavik in km/h?,The current wind speed in Reykjavik is 7.9 km/h.
+wx-20,weather,baseline,False,auto,"wind_kmh: API 17.7 (±4), answer []",9.14,1,0,29,309,0,,,get_weather,What is the current wind speed in Chicago in km/h?,"I cannot provide you with the current, real-time wind speed in Chicago because I do not have access to live weather data.
+
+To get the most accurate and up-to-date information, please check a reliable weather source such as:
+
+*   **The National Weather Service (NWS)**
+*   **AccuWeather**
+*   **The Weather Channel**
+*   **A local news weather report**
+
+These sources will provide the current wind speed in km/h (or mph, depending on their default setting)."
+wx-20,weather,agent_full,True,auto,"wind_kmh: API 17.7 (±4), answer [17.7]",24.46,3,1,1806,359,0,,get_weather,get_weather,What is the current wind speed in Chicago in km/h?,The current wind speed in Chicago is 17.7 km/h.
+wx-21,weather,baseline,False,auto,"wind_kmh: API 14.8 (±4), answer []",9.33,1,0,29,315,0,,,get_weather,What is the current wind speed in Istanbul in km/h?,"I cannot provide you with the current, real-time wind speed in Istanbul because I do not have access to live weather data.
+
+To get the most accurate and up-to-date information, please check a reliable weather source such as:
+
+*   **AccuWeather**
+*   **The Weather Channel**
+*   **Google Weather** (by searching ""weather Istanbul"")
+
+These sources will provide the current wind speed in km/h (or your preferred unit)."
+wx-21,weather,agent_full,True,auto,"wind_kmh: API 14.8 (±4), answer [14.8]",21.16,3,1,1745,362,0,,get_weather,get_weather,What is the current wind speed in Istanbul in km/h?,The current wind speed in Istanbul is 14.8 km/h.
+wx-22,weather,baseline,False,auto,"wind_kmh: API 22.7 (±4), answer []",10.17,1,0,29,343,0,,,get_weather,What is the current wind speed in Baku in km/h?,"I cannot provide you with the current, real-time wind speed in Baku because I do not have access to live weather data.
+
+To get the most accurate and up-to-date information, please check a reliable weather source such as:
+
+*   **AccuWeather**
+*   **Weather.com**
+*   **Google Weather Search** (by searching ""weather Baku"")
+*   **A local Azerbaijani weather service**
+
+These sources will provide the current wind speed, usually with the option to view it in km/h."
+wx-22,weather,agent_full,True,auto,"wind_kmh: API 22.7 (±4), answer [22.7]",21.46,3,1,1742,361,0,,get_weather,get_weather,What is the current wind speed in Baku in km/h?,The current wind speed in Baku is 22.7 km/h.
+wx-23,weather,baseline,False,auto,"wind_kmh: API 53.5 (±4), answer []",10.59,1,0,29,363,0,,,get_weather,What is the current wind speed in Wellington in km/h?,"I cannot provide you with the current, real-time wind speed in Wellington because I do not have access to live weather data.
+
+To get the most accurate and up-to-the-minute reading, please check one of the following reliable sources:
+
+* **MetService New Zealand:** (The official source for New Zealand weather)
+* **Local Weather Apps:** (Such as AccuWeather or Weather Underground)
+* **Google Search:** (Searching ""weather Wellington"" usually provides a current reading)"
+wx-23,weather,agent_full,True,auto,"wind_kmh: API 53.5 (±4), answer [53.5]",25.12,3,1,1843,365,0,,get_weather,get_weather,What is the current wind speed in Wellington in km/h?,The current wind speed in Wellington is 53.5 km/h.
+wx-24,weather,baseline,False,auto,"wind_kmh: API 9.4 (±4), answer []",9.57,1,0,29,326,0,,,get_weather,What is the current wind speed in Dubai in km/h?,"I do not have access to real-time, live weather data, so I cannot tell you the current wind speed in Dubai right now.
+
+To get the most accurate and up-to-date information, please check a reliable weather source such as:
+
+*   **Google Weather Search**
+*   **AccuWeather**
+*   **The official Dubai/UAE meteorological website**
+
+These sources will provide the current wind speed in km/h (or mph, depending on the site)."
+wx-24,weather,agent_full,True,auto,"wind_kmh: API 9.4 (±4), answer [9.4]",23.62,3,1,1818,358,0,,get_weather,get_weather,What is the current wind speed in Dubai in km/h?,The current wind speed in Dubai is 9.4 km/h.
+web-09,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,5.81,1,0,24,191,0,,,web_search,Who is the current CEO of Alphabet?,The current CEO of Alphabet is **Sundar Pichai**.
+web-09,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,25.75,3,1,2450,146,0,,web_search,web_search,Who is the current CEO of Alphabet?,The current CEO of Alphabet is Sundar Pichai.
+web-10,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,5.73,1,0,24,189,0,,,web_search,Who is the current CEO of Amazon?,The current CEO of Amazon is **Andy Jassy**.
+web-10,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,26.64,3,1,2418,148,0,,web_search,web_search,Who is the current CEO of Amazon?,The current CEO of Amazon is **Andy Jassy**.
+web-11,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,3.63,1,0,24,117,0,,,web_search,Who is the current CEO of Meta?,The current CEO of Meta Platforms is **Mark Zuckerberg**.
+web-11,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,18.77,3,1,2038,145,0,,web_search,web_search,Who is the current CEO of Meta?,Mark Zuckerberg is the current CEO and Chairman of Meta Platforms.
+web-12,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,3.5,1,0,24,112,0,,,web_search,Who is the current CEO of Tesla?,The current CEO of Tesla is **Elon Musk**.
+web-12,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,32.93,3,1,1403,502,0,,web_search,web_search,Who is the current CEO of Tesla?,Elon Musk is the current CEO of Tesla.
+web-13,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,5.36,1,0,29,176,0,,,web_search,Who is the current Director-General of the World Health Organization?,The current Director-General of the World Health Organization (WHO) is **Dr. Tedros Adhanom Ghebreyesus**.
+web-13,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,33.98,3,1,1472,430,0,,web_search,web_search,Who is the current Director-General of the World Health Organization?,The current Director-General of the World Health Organization (WHO) is **Dr. Tedros Adhanom Ghebreyesus**.
+web-14,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,6.33,1,0,28,208,0,,,web_search,Who is the current Managing Director of the International Monetary Fund?,The current Managing Director of the International Monetary Fund (IMF) is **Kristalina Georgieva**.
+web-14,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,20.33,3,1,2148,204,0,,web_search,web_search,Who is the current Managing Director of the International Monetary Fund?,The current Managing Director of the International Monetary Fund (IMF) is **Kristalina Georgieva**.
+web-15,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,7.13,1,0,26,242,0,,,web_search,Who is the current President of the World Bank?,The current President of the World Bank is **Ajay Banga**.
+web-15,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,24.79,3,1,2254,160,0,,web_search,web_search,Who is the current President of the World Bank?,The current President of the World Bank Group is **Ajay Banga**.
+web-16,web_search,baseline,False,auto,keywords ['Merz'] missing from answer,3.91,1,0,24,126,0,,,web_search,Who is the current Chancellor of Germany?,The current Chancellor of Germany is **Olaf Scholz**.
+web-16,web_search,agent_full,False,auto,keywords ['Merz'] missing from answer,34.34,3,1,2330,304,0,,web_search,web_search,Who is the current Chancellor of Germany?,The current Chancellor of Germany is Olaf Scholz.
+web-17,web_search,baseline,True,auto,keywords found in answer and confirmed by search results,3.88,1,0,24,121,0,,,web_search,Who is the current President of France?,The current President of France is **Emmanuel Macron**.
+web-17,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,24.21,3,1,2239,152,0,,web_search,web_search,Who is the current President of France?,The current President of France is **Emmanuel Macron**.
+web-18,web_search,baseline,False,auto,keywords ['Leo'] missing from answer,4.75,1,0,22,154,0,,,web_search,Who is the current Pope?,The current Pope is **Pope Francis**.
+web-18,web_search,agent_full,True,auto,keywords found in answer and confirmed by search results,56.77,5,1,6415,725,1,,web_search,web_search,Who is the current Pope?,"I apologize for the incorrect information. Based on the search results provided, the current Pope is **Leo XIV**, who was elected on May 8, 2025."
+multi-07,multi_tool,baseline,False,auto,"no clock time in answer | expected 495, answer numbers [495.0]",18.73,1,0,39,652,0,,,"get_current_datetime,calculator","What is the current local time in Paris, and what is 18% of 2750?","I cannot provide the current local time in Paris because I do not have access to real-time clock data. Please check a reliable online clock or search engine for the current time.
+
+However, I can calculate the percentage for you:
+
+**18% of 2750 is 495.**"
+multi-07,multi_tool,agent_full,True,auto,"tz Europe/Paris, answer times [1054] (minutes since midnight) | expected 495, answer numbers [2026.0, 10.0, 15.0, 17.0, 34.0, 2.0]",23.83,3,2,1729,383,0,,"get_current_datetime,calculator","get_current_datetime,calculator","What is the current local time in Paris, and what is 18% of 2750?","The current local time in Paris is Thursday, 2026-10-15 17:34 (UTC+02:00).
+
+18% of 2750 is 495.0."
+multi-08,multi_tool,baseline,False,auto,"no clock time in answer | expected 434, answer numbers [434.0]",12.7,1,0,39,440,0,,,"get_current_datetime,calculator","What is the current local time in Singapore, and what is 35% of 1240?","I cannot provide the current local time in Singapore because I do not have real-time access to the clock. Please check a reliable online clock or search engine for the current time there.
+
+However, I can calculate the percentage for you:
+
+**35% of 1240 is 434.**"
+multi-08,multi_tool,agent_full,True,auto,"tz Asia/Singapore, answer times [1414] (minutes since midnight) | expected 434, answer numbers [2026.0, 10.0, 15.0, 23.0, 34.0, 8.0]",24.88,3,2,1727,379,0,,"get_current_datetime,calculator","get_current_datetime,calculator","What is the current local time in Singapore, and what is 35% of 1240?","The current local time in Singapore is Thursday, 2026-10-15 23:34 (UTC+08:00).
+
+35% of 1240 is 434.0."
+multi-09,multi_tool,baseline,False,auto,"no clock time in answer | expected 720, answer numbers [720.0]",26.17,1,0,41,907,0,,,"get_current_datetime,calculator","What is the current local time in Los Angeles, and what is 7.5% of 9600?","I cannot provide the current local time in Los Angeles because I do not have access to real-time clock data. Please check a reliable time source for the current time.
+
+However, I can calculate the math for you:
+
+**7.5% of 9600 is 720.**"
+multi-09,multi_tool,agent_full,True,auto,"tz America/Los_Angeles, answer times [515, 1235] (minutes since midnight) | expected 720, answer numbers [2026.0, 10.0, 15.0, 8.0, 35.0, 7.0]",26.64,3,2,1747,415,0,,"get_current_datetime,calculator","get_current_datetime,calculator","What is the current local time in Los Angeles, and what is 7.5% of 9600?","The current local time in Los Angeles is Thursday, 2026-10-15 08:35 (UTC-07:00).
+
+7.5% of 9600 is **720**."
+multi-10,multi_tool,baseline,False,auto,"temperature_c: API 55.6 (±4.0), answer [4.0, 10.0, 1.0, 10.0, 2.0]",11.85,1,0,37,402,0,,,"get_weather,calculator","What is the current temperature in Oslo in degrees Celsius, and what is that temperature multiplied by 4?","I cannot provide you with the current, real-time temperature in Oslo, as I do not have access to live weather data.
+
+To get the temperature, please check a reliable weather website or app (such as AccuWeather, Weather.com, or a local Norwegian weather service).
+
+**Once you have the temperature (T) in degrees Celsius, you can calculate the second part of your request by multiplying that number by 4.**
+
+**Example:**
+If the temperature in Oslo were **10°C**:
+1. The temperature is 10°C.
+2. 10 multiplied by 4 equals **40**."
+multi-10,multi_tool,agent_full,True,auto,"temperature_c: API 55.6 (±4.0), answer [13.9, 4.0, 55.6]",28.28,4,2,2650,429,0,,"get_weather,calculator","get_weather,calculator","What is the current temperature in Oslo in degrees Celsius, and what is that temperature multiplied by 4?","The current temperature in Oslo is 13.9°C.
+
+That temperature multiplied by 4 is 55.6."
+multi-11,multi_tool,baseline,False,human,no weather reference (KeyError: 'current'),11.74,1,0,37,403,0,,,"get_weather,calculator","What is the current temperature in Madrid in degrees Celsius, and what is that temperature multiplied by 2?","I do not have access to real-time weather data, so I cannot provide the current temperature in Madrid.
+
+To get the answer, please check a reliable weather source for the current temperature (let's call it **T**).
+
+Once you have the temperature, you can calculate the second part by multiplying that number by 2:
+
+**Temperature in Madrid (T) $\times$ 2 = Your Answer**"
+multi-11,multi_tool,agent_full,True,human,no weather reference (KeyError: 'current'),26.42,4,2,2607,421,0,,"get_weather,calculator","get_weather,calculator","What is the current temperature in Madrid in degrees Celsius, and what is that temperature multiplied by 2?","The current temperature in Madrid is 25.4°C. Multiplied by 2, that temperature is 50.8."
+multi-12,multi_tool,baseline,False,auto,"temperature_c: API 16.3 (±1.5), answer [] | no clock time in answer",8.67,1,0,34,296,0,,,"get_weather,get_current_datetime","What is the current temperature in Seoul in degrees Celsius, and what time is it there?","I do not have access to real-time, live data like current weather or the exact time in a specific location.
+
+To get the most accurate and up-to-date information, please check a reliable source such as:
+
+*   **Google Search:** (Search for ""weather in Seoul"" or ""time in Seoul"")
+*   **A dedicated weather website** (e.g., AccuWeather, Weather.com)
+*   **A world clock app** on your phone."
+multi-12,multi_tool,agent_full,True,auto,"temperature_c: API 16.3 (±1.5), answer [16.3] | tz Asia/Seoul, answer times [37] (minutes since midnight)",29.47,3,2,2072,431,0,,"get_weather,get_current_datetime","get_weather,get_current_datetime","What is the current temperature in Seoul in degrees Celsius, and what time is it there?","The current temperature in Seoul is **16.3°C**.
+
+The current time in Seoul is **Friday, 2026-10-16 at 00:37**."
+multi-13,multi_tool,baseline,False,auto,"temperature_c: API 25.9 (±1.5), answer [] | no clock time in answer",10.65,1,0,34,361,0,,,"get_weather,get_current_datetime","What is the current temperature in Cairo in degrees Celsius, and what time is it there?","I do not have access to real-time, live data for current weather conditions or the exact time in specific locations.
+
+To get the most accurate and up-to-the-minute information, please check a reliable source such as:
+
+*   **Google Search/Weather App:** Search ""weather in Cairo"" or ""time in Cairo.""
+*   **Major Weather Websites:** (e.g., AccuWeather, Weather.com)
+
+These sources will provide the current temperature in Celsius and the precise local time for Cairo."
+multi-13,multi_tool,agent_full,True,auto,"temperature_c: API 25.9 (±1.5), answer [25.9] | tz Africa/Cairo, answer times [1118] (minutes since midnight)",31.04,3,2,2095,395,0,,"get_weather,get_current_datetime","get_weather,get_current_datetime","What is the current temperature in Cairo in degrees Celsius, and what time is it there?","The current temperature in Cairo is **25.9°C**.
+
+The current time in Cairo is **Thursday, October 15, 2026, at 18:38** (UTC+03:00)."
+multi-14,multi_tool,baseline,False,auto,"expected 10 hours | expected 10063, answer numbers [8.0, 11.0, 10063.0]",20.08,1,0,42,697,0,,,"time_difference,calculator","How many hours apart are the current local times in London and Sydney, and what is 347 * 29?","**Time Difference (London and Sydney):**
+
+I cannot provide the exact current time difference because it depends on the specific date and whether Daylight Saving Time (DST) is currently active in either London or Sydney.
+
+*   **General Range:** The time difference is typically between **8 and 11 hours**, depending on the time of year.
+*   **To find the precise difference,** you would need to check a real-time clock service for both locations.
+
+**Calculation:**
+
+$347 \times 29 = 10,063$"
+multi-14,multi_tool,agent_full,True,auto,"expected 10 hours | expected 10063, answer numbers [10.0, 10063.0]",22.99,3,2,1781,347,0,,"time_difference,calculator","time_difference,calculator","How many hours apart are the current local times in London and Sydney, and what is 347 * 29?","Sydney is 10 hours ahead of London.
+
+347 multiplied by 29 is 10,063."
+multi-15,multi_tool,baseline,True,auto,"expected 10.5 hours | expected 51156, answer numbers [10.5, 11.5, 5.0, 10.5, 6.0, 11.5]",20.36,1,0,42,706,0,,,"time_difference,calculator","How many hours apart are the current local times in Delhi and Chicago, and what is 812 * 63?","The time difference between Delhi and Chicago is typically **10.5 to 11.5 hours**, depending on whether Chicago is observing Daylight Saving Time (CDT) or Standard Time (CST).
+
+*   **If Chicago is on CDT (UTC-5):** Delhi is 10.5 hours ahead of Chicago.
+*   **If Chicago is on CST (UTC-6):** Delhi is 11.5 hours ahead of Chicago.
+
+***
+
+The result of $812 \times 63$ is **51,156**."
+multi-15,multi_tool,agent_full,True,auto,"expected 10.5 hours | expected 51156, answer numbers [10.0, 30.0, 51156.0]",28.34,3,2,1820,508,0,,"time_difference,calculator","time_difference,calculator","How many hours apart are the current local times in Delhi and Chicago, and what is 812 * 63?","Chicago is 10 hours and 30 minutes behind Delhi.
+
+The result of $812 \times 63$ is **51,156**."
+multi-16,multi_tool,baseline,True,auto,"keywords found in answer and confirmed by search results | expected 225, answer numbers [225.0]",14.64,1,0,38,500,0,,,"web_search,calculator","Who is the current CEO of Amazon, and what is 3375 divided by 15?","The current CEO of Amazon is **Andy Jassy**.
+
+3375 divided by 15 is **225**."
+multi-16,multi_tool,agent_full,True,auto,"keywords found in answer and confirmed by search results | expected 225, answer numbers [225.0]",35.59,3,2,2769,328,0,,"web_search,calculator","web_search,calculator","Who is the current CEO of Amazon, and what is 3375 divided by 15?","The current CEO of Amazon is Andy Jassy.
+
+3375 divided by 15 is 225."
+multi-17,multi_tool,baseline,True,auto,"keywords found in answer and confirmed by search results | expected 110, answer numbers [110.0]",9.82,1,0,38,333,0,,,"web_search,calculator","Who is the current CEO of Nvidia, and what is 2640 divided by 24?","The current CEO of Nvidia is **Jensen Huang**.
+
+2640 divided by 24 is **110**."
+multi-17,multi_tool,agent_full,True,auto,"keywords found in answer and confirmed by search results | expected 110, answer numbers [110.0]",29.09,3,2,2607,325,0,,"web_search,calculator","web_search,calculator","Who is the current CEO of Nvidia, and what is 2640 divided by 24?","The current CEO of Nvidia is **Jensen Huang**.
+
+2640 divided by 24 is **110**."
+multi-18,multi_tool,baseline,False,auto,"temperature_c: API 13.9 (±1.5), answer [] | temperature_c: API 22.3 (±1.5), answer []",9.93,1,0,33,334,0,,,get_weather,"Which is warmer right now, Oslo or Nairobi? Give both temperatures in degrees Celsius.","I cannot provide you with the current, real-time temperatures for Oslo and Nairobi because I do not have access to live weather data. Weather changes constantly and requires a live connection to a weather service.
+
+To find out which is warmer right now, please check a reliable weather website (like AccuWeather, Weather.com, or Google Weather) and enter both city names."
+multi-18,multi_tool,agent_full,True,auto,"temperature_c: API 13.9 (±1.5), answer [22.3, 13.9] | temperature_c: API 22.3 (±1.5), answer [22.3, 13.9]",22.7,3,2,2183,319,0,,"get_weather,get_weather",get_weather,"Which is warmer right now, Oslo or Nairobi? Give both temperatures in degrees Celsius.","Nairobi is warmer right now.
+
+*   **Nairobi:** 22.3°C
+*   **Oslo:** 13.9°C"
+know-07,knowledge,baseline,True,auto,keywords ['Na'],0.4,1,0,24,10,0,,,,What is the chemical symbol for sodium?,The chemical symbol for sodium is **Na**.
+know-07,knowledge,agent_full,True,auto,keywords ['Na'],28.02,3,1,2134,218,0,,web_search,,What is the chemical symbol for sodium?,The chemical symbol for sodium is **Na**.
+know-08,knowledge,baseline,True,auto,keywords ['Canberra'],0.42,1,0,23,10,0,,,,What is the capital of Australia?,The capital of Australia is **Canberra**.
+know-08,knowledge,agent_full,True,auto,keywords ['Canberra'],22.48,3,1,2263,133,0,,web_search,,What is the capital of Australia?,The capital of Australia is Canberra.
+know-09,knowledge,baseline,True,auto,keywords ['Orwell'],0.61,1,0,26,17,0,,,,Who wrote the novel Nineteen Eighty-Four?,The novel *Nineteen Eighty-Four* was written by **George Orwell**.
+know-09,knowledge,agent_full,True,auto,keywords ['Orwell'],22.05,3,1,3725,174,0,,web_search,,Who wrote the novel Nineteen Eighty-Four?,George Orwell wrote the novel *Nineteen Eighty-Four*.
+know-10,knowledge,baseline,True,auto,"expected 2, answer numbers [2.0, 1.0, 1.0, 2.0, 1.0, 2.0]",8.52,1,0,23,293,0,,,,What is the smallest prime number?,"The smallest prime number is **2**.
+
+(A prime number is a whole number greater than 1 whose only divisors are 1 and itself. Since 2 is only divisible by 1 and 2, it is prime. It is also the only even prime number.)"
+know-10,knowledge,agent_full,True,auto,"expected 2, answer numbers [2.0, 1.0, 1.0, 2.0, 1.0, 2.0]",25.13,3,1,2633,213,0,,web_search,,What is the smallest prime number?,"The smallest prime number is **2**.
+
+A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. Since 2 is only divisible by 1 and 2, it is the smallest prime number."
+know-11,knowledge,baseline,True,auto,keywords ['Mars'],0.47,1,0,25,12,0,,,,Which planet is known as the Red Planet?,The planet known as the Red Planet is **Mars**.
+know-11,knowledge,agent_full,True,auto,keywords ['Mars'],20.7,3,1,2402,189,0,,web_search,,Which planet is known as the Red Planet?,Mars is known as the Red Planet. This color comes from iron oxide (rust) that coats much of its surface.
+know-12,knowledge,baseline,True,auto,keywords ['Einstein'],5.86,1,0,24,201,0,,,,Who developed the theory of general relativity?,"The theory of general relativity was developed by **Albert Einstein**.
+
+He published the theory in 1915, and it revolutionized our understanding of gravity, proposing that gravity is not a force, but rather a curvature of spacetime caused by mass and energy."
+know-12,knowledge,agent_full,True,auto,keywords ['Einstein'],24.18,3,1,2604,161,0,,web_search,,Who developed the theory of general relativity?,Albert Einstein developed the theory of general relativity. The final form of the theory was published in 1916.
