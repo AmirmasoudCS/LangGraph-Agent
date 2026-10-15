@@ -684,5 +684,1424 @@
    "expected": 100,
    "abs_tol": 0.0
   }
+ },
+ {
+  "id": "calc-10",
+  "category": "calculator",
+  "question": "What is 93810 * 2824?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 264919440,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-11",
+  "category": "calculator",
+  "question": "What is 13278 * 5506?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 73108668,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-12",
+  "category": "calculator",
+  "question": "What is 42098 * 4657?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 196050386,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-13",
+  "category": "calculator",
+  "question": "What is 28289 * 2679?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 75786231,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-14",
+  "category": "calculator",
+  "question": "What is 98696 * 9935?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 980544760,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-15",
+  "category": "calculator",
+  "question": "Calculate (48213 + 7391) * 625 - 18.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 34752482,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-16",
+  "category": "calculator",
+  "question": "Calculate 847 * 653 + 391 * 782.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 858853,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-17",
+  "category": "calculator",
+  "question": "Calculate (9123 - 4567) * (38 + 21).",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 268804,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-18",
+  "category": "calculator",
+  "question": "Calculate 1357 ** 2 + 2468 ** 2.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 7932473,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-19",
+  "category": "calculator",
+  "question": "Calculate (7654 * 321) / 17. Round to 2 decimal places.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 144525.53,
+   "abs_tol": 0.0051
+  }
+ },
+ {
+  "id": "calc-20",
+  "category": "calculator",
+  "question": "Calculate (99991 + 37 * 41) / 7. Round to 2 decimal places.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 14501.14,
+   "abs_tol": 0.0051
+  }
+ },
+ {
+  "id": "calc-21",
+  "category": "calculator",
+  "question": "Calculate 3456 * 789 - 12 ** 5.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 2477952,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-22",
+  "category": "calculator",
+  "question": "What is 13 to the power of 11?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 1792160394037,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-23",
+  "category": "calculator",
+  "question": "What is 7 to the power of 15?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 4747561509943,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-24",
+  "category": "calculator",
+  "question": "What is 23 to the power of 8?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 78310985281,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-25",
+  "category": "calculator",
+  "question": "What is 17 to the power of 10?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 2015993900449,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "calc-26",
+  "category": "calculator",
+  "question": "What is 23.7% of 8450?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 2002.65,
+   "abs_tol": 0.01
+  }
+ },
+ {
+  "id": "calc-27",
+  "category": "calculator",
+  "question": "What is 8.5% of 12480?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 1060.8,
+   "abs_tol": 0.01
+  }
+ },
+ {
+  "id": "calc-28",
+  "category": "calculator",
+  "question": "What is 62.5% of 3472?",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 2170.0,
+   "abs_tol": 0.01
+  }
+ },
+ {
+  "id": "calc-29",
+  "category": "calculator",
+  "question": "What is 7919 divided by 313? Round to 3 decimal places.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 25.3,
+   "abs_tol": 0.0006
+  }
+ },
+ {
+  "id": "calc-30",
+  "category": "calculator",
+  "question": "What is 123456 divided by 789? Round to 3 decimal places.",
+  "expected_tools": [
+   "calculator"
+  ],
+  "check": {
+   "type": "numeric",
+   "expected": 156.471,
+   "abs_tol": 0.0006
+  }
+ },
+ {
+  "id": "time-07",
+  "category": "datetime",
+  "question": "What is the current local time in Mumbai?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Asia/Kolkata",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-08",
+  "category": "datetime",
+  "question": "What is the current local time in Los Angeles?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "America/Los_Angeles",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-09",
+  "category": "datetime",
+  "question": "What is the current local time in Paris?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Europe/Paris",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-10",
+  "category": "datetime",
+  "question": "What is the current local time in Cairo?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Africa/Cairo",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-11",
+  "category": "datetime",
+  "question": "What is the current local time in Johannesburg?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Africa/Johannesburg",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-12",
+  "category": "datetime",
+  "question": "What is the current local time in Singapore?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Asia/Singapore",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-13",
+  "category": "datetime",
+  "question": "What is the current local time in Moscow?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Europe/Moscow",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-14",
+  "category": "datetime",
+  "question": "What is the current local time in Mexico City?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "America/Mexico_City",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-15",
+  "category": "datetime",
+  "question": "What is the current local time in Kathmandu?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Asia/Kathmandu",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-16",
+  "category": "datetime",
+  "question": "What is the current local time in Adelaide?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Australia/Adelaide",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-17",
+  "category": "datetime",
+  "question": "What is the current local time in Auckland?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Pacific/Auckland",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-18",
+  "category": "datetime",
+  "question": "What is the current local time in Anchorage?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "America/Anchorage",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-19",
+  "category": "datetime",
+  "question": "What is the current local time in Honolulu?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Pacific/Honolulu",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "time-20",
+  "category": "datetime",
+  "question": "What is the current local time in Tehran?",
+  "expected_tools": [
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "time",
+   "tz": "Asia/Tehran",
+   "tol_min": 3
+  }
+ },
+ {
+  "id": "diff-06",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Adelaide and Kathmandu? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Australia/Adelaide",
+   "tz_b": "Asia/Kathmandu"
+  }
+ },
+ {
+  "id": "diff-07",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Tehran and Kabul? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Tehran",
+   "tz_b": "Asia/Kabul"
+  }
+ },
+ {
+  "id": "diff-08",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Auckland and London? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Pacific/Auckland",
+   "tz_b": "Europe/London"
+  }
+ },
+ {
+  "id": "diff-09",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Anchorage and Honolulu? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "America/Anchorage",
+   "tz_b": "Pacific/Honolulu"
+  }
+ },
+ {
+  "id": "diff-10",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Cairo and Moscow? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Africa/Cairo",
+   "tz_b": "Europe/Moscow"
+  }
+ },
+ {
+  "id": "diff-11",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Denver and Berlin? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "America/Denver",
+   "tz_b": "Europe/Berlin"
+  }
+ },
+ {
+  "id": "diff-12",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Mumbai and Sydney? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Kolkata",
+   "tz_b": "Australia/Sydney"
+  }
+ },
+ {
+  "id": "diff-13",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Singapore and Los Angeles? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Singapore",
+   "tz_b": "America/Los_Angeles"
+  }
+ },
+ {
+  "id": "diff-14",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Paris and New York? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Europe/Paris",
+   "tz_b": "America/New_York"
+  }
+ },
+ {
+  "id": "diff-15",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Johannesburg and Tokyo? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Africa/Johannesburg",
+   "tz_b": "Asia/Tokyo"
+  }
+ },
+ {
+  "id": "diff-16",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Mexico City and Madrid? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "America/Mexico_City",
+   "tz_b": "Europe/Madrid"
+  }
+ },
+ {
+  "id": "diff-17",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Dubai and Toronto? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Dubai",
+   "tz_b": "America/Toronto"
+  }
+ },
+ {
+  "id": "diff-18",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Istanbul and Vancouver? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Europe/Istanbul",
+   "tz_b": "America/Vancouver"
+  }
+ },
+ {
+  "id": "diff-19",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Bangkok and Adelaide? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Asia/Bangkok",
+   "tz_b": "Australia/Adelaide"
+  }
+ },
+ {
+  "id": "diff-20",
+  "category": "time_difference",
+  "question": "How many hours apart are the current local times in Lagos and Auckland? Answer in hours.",
+  "expected_tools": [
+   "time_difference"
+  ],
+  "check": {
+   "type": "time_difference",
+   "tz_a": "Africa/Lagos",
+   "tz_b": "Pacific/Auckland"
+  }
+ },
+ {
+  "id": "wx-07",
+  "category": "weather",
+  "question": "What is the current temperature in Oslo in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Oslo",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-08",
+  "category": "weather",
+  "question": "What is the current temperature in Nairobi in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Nairobi",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-09",
+  "category": "weather",
+  "question": "What is the current temperature in Seoul in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Seoul",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-10",
+  "category": "weather",
+  "question": "What is the current temperature in Madrid in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Madrid",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-11",
+  "category": "weather",
+  "question": "What is the current temperature in Cape Town in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Cape Town",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-12",
+  "category": "weather",
+  "question": "What is the current temperature in Singapore in degrees Celsius?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Singapore",
+   "field": "temperature_c",
+   "tol": 1.5
+  }
+ },
+ {
+  "id": "wx-13",
+  "category": "weather",
+  "question": "What is the current relative humidity in Berlin in percent?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Berlin",
+   "field": "humidity",
+   "tol": 6
+  }
+ },
+ {
+  "id": "wx-14",
+  "category": "weather",
+  "question": "What is the current relative humidity in Mumbai in percent?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Mumbai",
+   "field": "humidity",
+   "tol": 6
+  }
+ },
+ {
+  "id": "wx-15",
+  "category": "weather",
+  "question": "What is the current relative humidity in Oslo in percent?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Oslo",
+   "field": "humidity",
+   "tol": 6
+  }
+ },
+ {
+  "id": "wx-16",
+  "category": "weather",
+  "question": "What is the current relative humidity in Vienna in percent?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Vienna",
+   "field": "humidity",
+   "tol": 6
+  }
+ },
+ {
+  "id": "wx-17",
+  "category": "weather",
+  "question": "What is the current relative humidity in Sydney in percent?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Sydney",
+   "field": "humidity",
+   "tol": 6
+  }
+ },
+ {
+  "id": "wx-18",
+  "category": "weather",
+  "question": "What is the current relative humidity in Toronto in percent?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Toronto",
+   "field": "humidity",
+   "tol": 6
+  }
+ },
+ {
+  "id": "wx-19",
+  "category": "weather",
+  "question": "What is the current wind speed in Reykjavik in km/h?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Reykjavik",
+   "field": "wind_kmh",
+   "tol": 4
+  }
+ },
+ {
+  "id": "wx-20",
+  "category": "weather",
+  "question": "What is the current wind speed in Chicago in km/h?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Chicago",
+   "field": "wind_kmh",
+   "tol": 4
+  }
+ },
+ {
+  "id": "wx-21",
+  "category": "weather",
+  "question": "What is the current wind speed in Istanbul in km/h?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Istanbul",
+   "field": "wind_kmh",
+   "tol": 4
+  }
+ },
+ {
+  "id": "wx-22",
+  "category": "weather",
+  "question": "What is the current wind speed in Baku in km/h?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Baku",
+   "field": "wind_kmh",
+   "tol": 4
+  }
+ },
+ {
+  "id": "wx-23",
+  "category": "weather",
+  "question": "What is the current wind speed in Wellington in km/h?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Wellington",
+   "field": "wind_kmh",
+   "tol": 4
+  }
+ },
+ {
+  "id": "wx-24",
+  "category": "weather",
+  "question": "What is the current wind speed in Dubai in km/h?",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Dubai",
+   "field": "wind_kmh",
+   "tol": 4
+  }
+ },
+ {
+  "id": "web-09",
+  "category": "web_search",
+  "question": "Who is the current CEO of Alphabet?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Pichai"
+   ],
+   "match": "any",
+   "query": "Alphabet CEO"
+  }
+ },
+ {
+  "id": "web-10",
+  "category": "web_search",
+  "question": "Who is the current CEO of Amazon?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Jassy"
+   ],
+   "match": "any",
+   "query": "Amazon CEO"
+  }
+ },
+ {
+  "id": "web-11",
+  "category": "web_search",
+  "question": "Who is the current CEO of Meta?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Zuckerberg"
+   ],
+   "match": "any",
+   "query": "Meta CEO"
+  }
+ },
+ {
+  "id": "web-12",
+  "category": "web_search",
+  "question": "Who is the current CEO of Tesla?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Musk"
+   ],
+   "match": "any",
+   "query": "Tesla CEO"
+  }
+ },
+ {
+  "id": "web-13",
+  "category": "web_search",
+  "question": "Who is the current Director-General of the World Health Organization?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Tedros"
+   ],
+   "match": "any",
+   "query": "WHO Director-General"
+  }
+ },
+ {
+  "id": "web-14",
+  "category": "web_search",
+  "question": "Who is the current Managing Director of the International Monetary Fund?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Georgieva"
+   ],
+   "match": "any",
+   "query": "IMF Managing Director"
+  }
+ },
+ {
+  "id": "web-15",
+  "category": "web_search",
+  "question": "Who is the current President of the World Bank?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Banga"
+   ],
+   "match": "any",
+   "query": "World Bank president"
+  }
+ },
+ {
+  "id": "web-16",
+  "category": "web_search",
+  "question": "Who is the current Chancellor of Germany?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Merz"
+   ],
+   "match": "any",
+   "query": "Chancellor of Germany"
+  }
+ },
+ {
+  "id": "web-17",
+  "category": "web_search",
+  "question": "Who is the current President of France?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Macron"
+   ],
+   "match": "any",
+   "query": "President of France"
+  }
+ },
+ {
+  "id": "web-18",
+  "category": "web_search",
+  "question": "Who is the current Pope?",
+  "expected_tools": [
+   "web_search"
+  ],
+  "check": {
+   "type": "search",
+   "keywords": [
+    "Leo"
+   ],
+   "match": "any",
+   "query": "current Pope"
+  }
+ },
+ {
+  "id": "multi-07",
+  "category": "multi_tool",
+  "question": "What is the current local time in Paris, and what is 18% of 2750?",
+  "expected_tools": [
+   "get_current_datetime",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "time",
+     "tz": "Europe/Paris",
+     "tol_min": 3
+    },
+    {
+     "type": "numeric",
+     "expected": 495.0,
+     "abs_tol": 0.01
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-08",
+  "category": "multi_tool",
+  "question": "What is the current local time in Singapore, and what is 35% of 1240?",
+  "expected_tools": [
+   "get_current_datetime",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "time",
+     "tz": "Asia/Singapore",
+     "tol_min": 3
+    },
+    {
+     "type": "numeric",
+     "expected": 434.0,
+     "abs_tol": 0.01
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-09",
+  "category": "multi_tool",
+  "question": "What is the current local time in Los Angeles, and what is 7.5% of 9600?",
+  "expected_tools": [
+   "get_current_datetime",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "time",
+     "tz": "America/Los_Angeles",
+     "tol_min": 3
+    },
+    {
+     "type": "numeric",
+     "expected": 720.0,
+     "abs_tol": 0.01
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-10",
+  "category": "multi_tool",
+  "question": "What is the current temperature in Oslo in degrees Celsius, and what is that temperature multiplied by 4?",
+  "expected_tools": [
+   "get_weather",
+   "calculator"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Oslo",
+   "field": "temperature_c",
+   "scale": 4,
+   "tol": 4.0
+  }
+ },
+ {
+  "id": "multi-11",
+  "category": "multi_tool",
+  "question": "What is the current temperature in Madrid in degrees Celsius, and what is that temperature multiplied by 2?",
+  "expected_tools": [
+   "get_weather",
+   "calculator"
+  ],
+  "check": {
+   "type": "weather",
+   "city": "Madrid",
+   "field": "temperature_c",
+   "scale": 2,
+   "tol": 2.0
+  }
+ },
+ {
+  "id": "multi-12",
+  "category": "multi_tool",
+  "question": "What is the current temperature in Seoul in degrees Celsius, and what time is it there?",
+  "expected_tools": [
+   "get_weather",
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "weather",
+     "city": "Seoul",
+     "field": "temperature_c",
+     "tol": 1.5
+    },
+    {
+     "type": "time",
+     "tz": "Asia/Seoul",
+     "tol_min": 3
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-13",
+  "category": "multi_tool",
+  "question": "What is the current temperature in Cairo in degrees Celsius, and what time is it there?",
+  "expected_tools": [
+   "get_weather",
+   "get_current_datetime"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "weather",
+     "city": "Cairo",
+     "field": "temperature_c",
+     "tol": 1.5
+    },
+    {
+     "type": "time",
+     "tz": "Africa/Cairo",
+     "tol_min": 3
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-14",
+  "category": "multi_tool",
+  "question": "How many hours apart are the current local times in London and Sydney, and what is 347 * 29?",
+  "expected_tools": [
+   "time_difference",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "time_difference",
+     "tz_a": "Europe/London",
+     "tz_b": "Australia/Sydney"
+    },
+    {
+     "type": "numeric",
+     "expected": 10063,
+     "abs_tol": 0.0
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-15",
+  "category": "multi_tool",
+  "question": "How many hours apart are the current local times in Delhi and Chicago, and what is 812 * 63?",
+  "expected_tools": [
+   "time_difference",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "time_difference",
+     "tz_a": "Asia/Kolkata",
+     "tz_b": "America/Chicago"
+    },
+    {
+     "type": "numeric",
+     "expected": 51156,
+     "abs_tol": 0.0
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-16",
+  "category": "multi_tool",
+  "question": "Who is the current CEO of Amazon, and what is 3375 divided by 15?",
+  "expected_tools": [
+   "web_search",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "search",
+     "keywords": [
+      "Jassy"
+     ],
+     "match": "any",
+     "query": "Amazon CEO"
+    },
+    {
+     "type": "numeric",
+     "expected": 225.0,
+     "abs_tol": 0.01
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-17",
+  "category": "multi_tool",
+  "question": "Who is the current CEO of Nvidia, and what is 2640 divided by 24?",
+  "expected_tools": [
+   "web_search",
+   "calculator"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "search",
+     "keywords": [
+      "Huang"
+     ],
+     "match": "any",
+     "query": "Nvidia CEO"
+    },
+    {
+     "type": "numeric",
+     "expected": 110.0,
+     "abs_tol": 0.01
+    }
+   ]
+  }
+ },
+ {
+  "id": "multi-18",
+  "category": "multi_tool",
+  "question": "Which is warmer right now, Oslo or Nairobi? Give both temperatures in degrees Celsius.",
+  "expected_tools": [
+   "get_weather"
+  ],
+  "check": {
+   "type": "all",
+   "checks": [
+    {
+     "type": "weather",
+     "city": "Oslo",
+     "field": "temperature_c",
+     "tol": 1.5
+    },
+    {
+     "type": "weather",
+     "city": "Nairobi",
+     "field": "temperature_c",
+     "tol": 1.5
+    }
+   ]
+  }
+ },
+ {
+  "id": "know-07",
+  "category": "knowledge",
+  "question": "What is the chemical symbol for sodium?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Na"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-08",
+  "category": "knowledge",
+  "question": "What is the capital of Australia?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Canberra"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-09",
+  "category": "knowledge",
+  "question": "Who wrote the novel Nineteen Eighty-Four?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Orwell"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-10",
+  "category": "knowledge",
+  "question": "What is the smallest prime number?",
+  "expected_tools": [],
+  "check": {
+   "type": "numeric",
+   "expected": 2,
+   "abs_tol": 0.0
+  }
+ },
+ {
+  "id": "know-11",
+  "category": "knowledge",
+  "question": "Which planet is known as the Red Planet?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Mars"
+   ],
+   "match": "any"
+  }
+ },
+ {
+  "id": "know-12",
+  "category": "knowledge",
+  "question": "Who developed the theory of general relativity?",
+  "expected_tools": [],
+  "check": {
+   "type": "contains",
+   "keywords": [
+    "Einstein"
+   ],
+   "match": "any"
+  }
  }
 ]
