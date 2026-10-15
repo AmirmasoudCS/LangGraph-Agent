@@ -1,10 +1,15 @@
 from pydantic import BaseModel
-from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage, trim_messages
+from langchain_core.messages import (
+    AIMessage, HumanMessage, SystemMessage, ToolMessage, trim_messages,
+)
 from langchain_core.messages.utils import count_tokens_approximately
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
 
-from src.config import get_llm, MAX_REVISIONS, MAX_HISTORY_TOKENS
+from src.config import (
+    get_llm, MAX_REVISIONS, MAX_HISTORY_TOKENS,
+    SUMMARY_TRIGGER_TOKENS, KEEP_RECENT_TOKENS,
+)
 from src.memory import checkpointer
 from src.state import AgentState
 from src.tools import ALL_TOOLS
@@ -12,25 +17,101 @@ from src.tools import ALL_TOOLS
 llm = get_llm()
 llm_with_tools = llm.bind_tools(ALL_TOOLS)
 
-SYSTEM = SystemMessage(content=(
+SYSTEM_TEXT = (
     "You are a helpful assistant. Use tools for arithmetic, weather, "
     "the current date/time, and for recent or uncertain facts. Answer concisely."
-))
+)
 FEEDBACK_PREFIX = "CRITIC FEEDBACK:"
+
+
+# ---------- Helpers for summarization ----------
+def live_messages(state: AgentState):
+    """Messages that are NOT yet covered by the summary."""
+    msgs = state["messages"]
+    upto = state.get("summarized_upto")
+    if upto:
+        for i, m in enumerate(msgs):
+            if m.id == upto:
+                return msgs[i + 1:]
+    return msgs
+
+
+def _turn_starts(messages):
+    """Indices of real user questions (not critic feedback). Cutting only at
+    these points never separates a tool call from its tool result."""
+    return [
+        i for i, m in enumerate(messages)
+        if isinstance(m, HumanMessage) and not m.content.startswith(FEEDBACK_PREFIX)
+    ]
+
+
+def _transcript(messages) -> str:
+    lines = []
+    for m in messages:
+        if isinstance(m, HumanMessage):
+            if not m.content.startswith(FEEDBACK_PREFIX):
+                lines.append(f"User: {m.content}")
+        elif isinstance(m, AIMessage) and m.content:
+            lines.append(f"Assistant: {m.content}")
+        elif isinstance(m, ToolMessage):
+            lines.append(f"Tool ({m.name}): {str(m.content)[:300]}")
+    return "\n".join(lines)
+
+
+# ---------- Node 0: summarizer (runs before every question) ----------
+def summarize(state: AgentState):
+    live = live_messages(state)
+    if count_tokens_approximately(live) < SUMMARY_TRIGGER_TOKENS:
+        return {}                                   # still small: do nothing
+
+    # Choose the cut: keep as many recent turns as fit in KEEP_RECENT_TOKENS,
+    # but always keep the current (last) turn.
+    starts = _turn_starts(live)
+    cut = starts[-1] if starts else 0
+    for s in reversed(starts[:-1]):
+        if count_tokens_approximately(live[s:]) <= KEEP_RECENT_TOKENS:
+            cut = s
+        else:
+            break
+    if cut == 0:
+        return {}                                   # nothing old enough to compress
+
+    old = live[:cut]
+    previous = state.get("summary", "")
+    prompt = (
+        "You maintain a running summary of a conversation between a user and an "
+        "assistant. Update the summary below with the new messages. Keep every "
+        "durable fact: names, preferences, numbers, decisions, results of tool "
+        "calls, and unfinished tasks. Drop small talk. Maximum 200 words. "
+        "Reply with ONLY the summary.\n\n"
+        f"CURRENT SUMMARY:\n{previous or '(empty)'}\n\n"
+        f"NEW MESSAGES:\n{_transcript(old)}"
+    )
+    try:
+        new_summary = llm.invoke(prompt).content.strip()
+    except Exception:
+        return {}                                   # never block the answer
+    if not new_summary:
+        return {}
+    return {"summary": new_summary, "summarized_upto": old[-1].id}
 
 
 # ---------- Node 1: the agent (LLM that can call tools) ----------
 def agent(state: AgentState):
-    # Trim only what the model SEES; the database keeps the full history.
+    system_text = SYSTEM_TEXT
+    if state.get("summary"):
+        system_text += f"\n\nSummary of the earlier conversation:\n{state['summary']}"
+
+    # Safety net: trim what the model SEES; the database keeps everything.
     history = trim_messages(
-        state["messages"],
-        strategy="last",                          # keep the most recent messages
+        live_messages(state),
+        strategy="last",
         max_tokens=MAX_HISTORY_TOKENS,
         token_counter=count_tokens_approximately,
-        start_on="human",                         # never start mid tool-call
-        allow_partial=False,                      # never cut a message in half
+        start_on="human",
+        allow_partial=False,
     )
-    reply = llm_with_tools.invoke([SYSTEM] + history)
+    reply = llm_with_tools.invoke([SystemMessage(content=system_text)] + history)
     return {"messages": [reply]}
 
 
@@ -84,17 +165,18 @@ def after_critic(state: AgentState):
 
 # ---------- Wiring ----------
 builder = StateGraph(AgentState)
+builder.add_node("summarize", summarize)
 builder.add_node("agent", agent)
 builder.add_node("tools", ToolNode(ALL_TOOLS))
 builder.add_node("critic", critic)
 
-builder.add_edge(START, "agent")
-# If the agent asked for tools -> "tools"; if it just answered -> "critic"
+builder.add_edge(START, "summarize")
+builder.add_edge("summarize", "agent")
 builder.add_conditional_edges("agent", tools_condition, {"tools": "tools", END: "critic"})
 builder.add_edge("tools", "agent")
 builder.add_conditional_edges("critic", after_critic, {"agent": "agent", END: END})
 
-graph = builder.compile(checkpointer=checkpointer)   # SQLite = memory that survives restarts
+graph = builder.compile(checkpointer=checkpointer)
 
 
 def ask(question: str, thread_id: str = "default"):
