@@ -1,10 +1,11 @@
 from pydantic import BaseModel
-from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
+from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage, trim_messages
+from langchain_core.messages.utils import count_tokens_approximately
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode, tools_condition
-from langgraph.checkpoint.memory import MemorySaver
 
-from src.config import get_llm, MAX_REVISIONS
+from src.config import get_llm, MAX_REVISIONS, MAX_HISTORY_TOKENS
+from src.memory import checkpointer
 from src.state import AgentState
 from src.tools import ALL_TOOLS
 
@@ -20,7 +21,16 @@ FEEDBACK_PREFIX = "CRITIC FEEDBACK:"
 
 # ---------- Node 1: the agent (LLM that can call tools) ----------
 def agent(state: AgentState):
-    reply = llm_with_tools.invoke([SYSTEM] + state["messages"])
+    # Trim only what the model SEES; the database keeps the full history.
+    history = trim_messages(
+        state["messages"],
+        strategy="last",                          # keep the most recent messages
+        max_tokens=MAX_HISTORY_TOKENS,
+        token_counter=count_tokens_approximately,
+        start_on="human",                         # never start mid tool-call
+        allow_partial=False,                      # never cut a message in half
+    )
+    reply = llm_with_tools.invoke([SYSTEM] + history)
     return {"messages": [reply]}
 
 
@@ -84,7 +94,7 @@ builder.add_conditional_edges("agent", tools_condition, {"tools": "tools", END: 
 builder.add_edge("tools", "agent")
 builder.add_conditional_edges("critic", after_critic, {"agent": "agent", END: END})
 
-graph = builder.compile(checkpointer=MemorySaver())   # MemorySaver = conversation memory
+graph = builder.compile(checkpointer=checkpointer)   # SQLite = memory that survives restarts
 
 
 def ask(question: str, thread_id: str = "default"):
