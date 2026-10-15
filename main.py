@@ -8,7 +8,7 @@ from rich.text import Text
 from src import sessions
 from src.graph import ask
 from src.memory import checkpointer
-from src.ollama_server import ensure_server              # NEW
+from src.ollama_server import ensure_server
 from src.display import console, run_with_internals, VERDICT_STYLE
 
 
@@ -34,25 +34,58 @@ def parse_args():
     actions.add_argument("--session", "-s", metavar="ID_OR_NAME",
                          help="resume a specific session")
     actions.add_argument("--list", "-l", action="store_true",
-                         help="list saved sessions and exit")
+                         help="list saved sessions and pick one to open")
     actions.add_argument("--remove-session", "-rm", dest="remove", metavar="ID_OR_NAME",
                          help="delete a session and exit")
     return parser.parse_args()
 
 
-def show_sessions():
+def show_sessions() -> list[dict]:                        # NEW: numbered rows, returns the list
     all_sessions = sessions.list_all()
     if not all_sessions:
         console.print("[dim]No saved sessions yet.[/dim]")
-        return
+        return []
     table = Table(title="Sessions", title_justify="left", border_style="cyan")
+    table.add_column("#", style="bold green", justify="right")
     table.add_column("ID", style="bold yellow")
     table.add_column("Name")
     table.add_column("Created", style="dim")
     table.add_column("Last used", style="dim")
-    for s in all_sessions:
-        table.add_row(s["id"], s["name"], s["created_at"].replace("T", " "), s["last_used"].replace("T", " "))
+    for i, s in enumerate(all_sessions, start=1):
+        table.add_row(str(i), s["id"], s["name"],
+                      s["created_at"].replace("T", " "), s["last_used"].replace("T", " "))
     console.print(table)
+    return all_sessions
+
+
+def pick_session():                                       # NEW
+    """Show the list and let the user open or delete a session.
+    Returns the chosen session dict, or None to exit."""
+    while True:
+        all_sessions = show_sessions()
+        if not all_sessions or not sys.stdin.isatty():    # nothing to pick / piped input
+            return None
+
+        choice = console.input(
+            "\n[bold]Open[/bold] a session by number, [bold]d <number>[/bold] to delete, "
+            "or press Enter to quit: "
+        ).strip().lower()
+
+        if not choice:
+            return None
+
+        deleting = choice.startswith("d ")
+        number = choice[2:].strip() if deleting else choice
+        if not number.isdigit() or not (1 <= int(number) <= len(all_sessions)):
+            console.print(f"[bold red]Enter a number between 1 and {len(all_sessions)}.[/bold red]")
+            continue
+
+        selected = all_sessions[int(number) - 1]
+        if deleting:
+            remove_session(selected["id"])
+            console.print()                               # then loop and show the updated list
+            continue
+        return selected
 
 
 def remove_session(ref: str):
@@ -102,9 +135,15 @@ def discard_unsaved(session_id: str, session_name):
 def main():
     args = parse_args()
 
-    if args.list:
-        show_sessions()
-        return
+    if args.list:                                         # NEW: pick instead of just printing
+        try:
+            chosen = pick_session()
+        except (KeyboardInterrupt, EOFError):
+            console.print("\n[dim]Bye.[/dim]")
+            return
+        if chosen is None:
+            return
+        args.session = chosen["id"]                       # fall through to the normal chat startup
     if args.remove:
         remove_session(args.remove)
         return
@@ -127,7 +166,7 @@ def main():
     label = f"[bold]{session_name}[/bold] ({session_id})" if session_name else "[bold]new session[/bold]"
     console.print(f"[bold]Agent ready.[/bold] Session: {label}. Internal messages: [bold]{mode}[/bold]. Type 'quit' to exit.")
 
-    try:                                                  # outer try: Ctrl+C / Ctrl+D
+    try:
         while True:
             q = console.input("\n[bold blue]You:[/bold blue] ")
             if q.strip().lower() in ("quit", "exit"):
@@ -135,7 +174,7 @@ def main():
             if not q.strip():
                 continue
 
-            try:                                          # inner try: errors during a question
+            try:
                 if args.internal:
                     answer, revisions, verdict = run_with_internals(q, session_id)
                 else:
@@ -168,7 +207,6 @@ def main():
                 padding=(1, 2),
             ))
 
-            # First question of a new session: let the agent name it, then save it
             if session_name is None:
                 with console.status("[bold cyan]naming session...", spinner="dots"):
                     session_name = sessions.generate_name(q)
