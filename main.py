@@ -1,5 +1,8 @@
 import argparse
 
+from rich.panel import Panel
+from rich.text import Text
+
 from src.graph import ask
 from src.display import console, run_with_internals, VERDICT_STYLE
 
@@ -40,9 +43,19 @@ def main():
             with console.status("[bold cyan]thinking...", spinner="dots"):
                 answer, revisions, verdict = ask(q, thread_id)
 
-        console.print(f"\n[bold green]Agent:[/bold green] {answer}")
         style = VERDICT_STYLE.get(verdict, "white")
-        console.print(f"[dim]self-check:[/dim] [{style}]{verdict or 'n/a'}[/{style}] [dim]| revisions: {revisions}[/dim]")
+        border = {"ok": "green", "retry": "red", "gave_up": "yellow"}.get(verdict, "white")
+
+        console.print()
+        console.print(Panel(
+            Text(answer, style="white"),
+            title="[bold green]Agent[/bold green]",
+            title_align="left",
+            subtitle=f"[dim]self-check:[/dim] [{style}]{verdict or 'n/a'}[/{style}] [dim]| revisions: {revisions}[/dim]",
+            subtitle_align="left",
+            border_style=border,
+            padding=(1, 2),
+        ))
 
 
 if __name__ == "__main__":
