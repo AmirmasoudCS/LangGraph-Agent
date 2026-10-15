@@ -8,7 +8,6 @@ from src.graph import graph
 console = Console()
 
 NODE_STYLE = {"agent": "cyan", "tools": "yellow", "critic": "magenta"}
-NODE_ICON = {"agent": "🧠", "tools": "🔧", "critic": "🔍"}
 VERDICT_STYLE = {"ok": "bold green", "retry": "bold red", "gave_up": "bold yellow"}
 
 
@@ -53,7 +52,7 @@ def run_with_internals(question: str, thread_id: str):
 
                 console.print(Panel(
                     Group(*body) if body else Text("(no output)", style="dim"),
-                    title=f"{NODE_ICON.get(node, '•')} step {step_no}: {node.upper()}",
+                    title=f"step {step_no}: {node.upper()}",
                     title_align="left",
                     border_style=NODE_STYLE.get(node, "white"),
                 ))
