@@ -7,7 +7,8 @@ from rich.text import Text
 
 from src import sessions
 from src.graph import ask
-from src.memory import checkpointer                      # NEW
+from src.memory import checkpointer
+from src.ollama_server import ensure_server              # NEW
 from src.display import console, run_with_internals, VERDICT_STYLE
 
 
@@ -91,7 +92,7 @@ def resolve_session(args):
     return sessions.new_id(), None             # (change this to always start fresh if you prefer)
 
 
-def discard_unsaved(session_id: str, session_name):      # NEW
+def discard_unsaved(session_id: str, session_name):
     """A brand-new session that never got registered must not leave
     orphan checkpoints behind in the database."""
     if session_name is None:
@@ -108,12 +109,25 @@ def main():
         remove_session(args.remove)
         return
 
+    try:
+        status = ensure_server()
+    except RuntimeError as e:
+        console.print(f"[bold red]{e}[/bold red]")
+        sys.exit(1)
+    if status == "started":
+        console.print("[dim]Started Ollama with flash attention and q8_0 KV cache.[/dim]")
+    else:
+        console.print(
+            "[yellow]Ollama was already running, so flash attention / KV cache settings "
+            "were NOT applied. Quit Ollama from the tray and rerun to apply them.[/yellow]"
+        )
+
     session_id, session_name = resolve_session(args)
     mode = "ON" if args.internal else "OFF"
     label = f"[bold]{session_name}[/bold] ({session_id})" if session_name else "[bold]new session[/bold]"
     console.print(f"[bold]Agent ready.[/bold] Session: {label}. Internal messages: [bold]{mode}[/bold]. Type 'quit' to exit.")
 
-    try:                                                  # NEW: outer try for Ctrl+C / Ctrl+D
+    try:                                                  # outer try: Ctrl+C / Ctrl+D
         while True:
             q = console.input("\n[bold blue]You:[/bold blue] ")
             if q.strip().lower() in ("quit", "exit"):
@@ -121,7 +135,7 @@ def main():
             if not q.strip():
                 continue
 
-            try:                                          # NEW: inner try for errors during a question
+            try:                                          # inner try: errors during a question
                 if args.internal:
                     answer, revisions, verdict = run_with_internals(q, session_id)
                 else:
@@ -163,7 +177,7 @@ def main():
             else:
                 sessions.touch(session_id)
 
-    except (KeyboardInterrupt, EOFError):                 # NEW
+    except (KeyboardInterrupt, EOFError):
         discard_unsaved(session_id, session_name)
         console.print("\n[dim]Bye.[/dim]")
 
