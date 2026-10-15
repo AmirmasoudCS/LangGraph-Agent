@@ -6,7 +6,7 @@ from rich.table import Table
 from rich.text import Text
 
 from src import facts, sessions
-from src.graph import ask
+from src.graph import ask, build_graph
 from src.memory import checkpointer
 from src.ollama_server import ensure_server
 from src.display import console, run_with_internals, VERDICT_STYLE
@@ -27,6 +27,12 @@ def parse_args():
         help="show only the final answer (default)",
     )
     parser.set_defaults(internal=False)
+
+    # Feature switches (combine with anything above or below)
+    parser.add_argument("--no-critic", "-nc", action="store_true",
+                        help="turn the self-fixing critic loop off")
+    parser.add_argument("--no-facts", "-nf", action="store_true",
+                        help="turn long-term facts off (not read into the prompt, not extracted)")
 
     actions = parser.add_mutually_exclusive_group()
     actions.add_argument("--new", "-n", action="store_true",
@@ -182,10 +188,18 @@ def main():
             "were NOT applied. Quit Ollama from the tray and rerun to apply them.[/yellow]"
         )
 
+    use_critic = not args.no_critic
+    use_facts = not args.no_facts
+    g = build_graph(use_critic=use_critic, use_facts=use_facts)   # same SQLite memory as always
+
     session_id, session_name = resolve_session(args)
     mode = "ON" if args.internal else "OFF"
     label = f"[bold]{session_name}[/bold] ({session_id})" if session_name else "[bold]new session[/bold]"
     console.print(f"[bold]Agent ready.[/bold] Session: {label}. Internal messages: [bold]{mode}[/bold]. Type 'quit' to exit.")
+    console.print(
+        f"[dim]critic:[/dim] [bold]{'ON' if use_critic else 'OFF'}[/bold]  "
+        f"[dim]long-term facts:[/dim] [bold]{'ON' if use_facts else 'OFF'}[/bold]"
+    )
 
     try:
         while True:
@@ -197,10 +211,10 @@ def main():
 
             try:
                 if args.internal:
-                    answer, revisions, verdict = run_with_internals(q, session_id)
+                    answer, revisions, verdict = run_with_internals(q, session_id, g)
                 else:
                     with console.status("[bold cyan]thinking...", spinner="dots"):
-                        answer, revisions, verdict = ask(q, session_id)
+                        answer, revisions, verdict = ask(q, session_id, g)
             except Exception as e:
                 console.print(Panel(
                     Text(f"{type(e).__name__}: {e}", style="white"),
@@ -216,23 +230,25 @@ def main():
 
             style = VERDICT_STYLE.get(verdict, "white")
             border = {"ok": "green", "retry": "red", "gave_up": "yellow"}.get(verdict, "white")
+            check = verdict or ("off" if not use_critic else "n/a")
 
             console.print()
             console.print(Panel(
                 Text(answer, style="white"),
                 title="[bold green]Agent[/bold green]",
                 title_align="left",
-                subtitle=f"[dim]self-check:[/dim] [{style}]{verdict or 'n/a'}[/{style}] [dim]| revisions: {revisions}[/dim]",
+                subtitle=f"[dim]self-check:[/dim] [{style}]{check}[/{style}] [dim]| revisions: {revisions}[/dim]",
                 subtitle_align="left",
                 border_style=border,
                 padding=(1, 2),
             ))
 
             # Long-term memory: extract durable facts about the user
-            with console.status("[bold cyan]updating memory...", spinner="dots"):
-                new_facts = facts.extract_and_save(q, answer, session_id)
-            for f in new_facts:
-                console.print(f"[dim]remembered:[/dim] [italic]{f}[/italic]")
+            if use_facts:
+                with console.status("[bold cyan]updating memory...", spinner="dots"):
+                    new_facts = facts.extract_and_save(q, answer, session_id)
+                for f in new_facts:
+                    console.print(f"[dim]remembered:[/dim] [italic]{f}[/italic]")
 
             # First question of a new session: let the agent name it, then save it
             if session_name is None:
