@@ -3,7 +3,7 @@ from langchain_ollama import ChatOllama
 MODEL_NAME = "gemma4:e4b"
 MAX_REVISIONS = 2   # how many times the critic may send the agent back
 
-NUM_CTX = 16384     # context window we ask Ollama for
+NUM_CTX = 8192     # context window we ask Ollama for
 
 # Summarization: when the live (unsummarized) history passes the trigger,
 # everything older than the most recent KEEP_RECENT_TOKENS is compressed.
