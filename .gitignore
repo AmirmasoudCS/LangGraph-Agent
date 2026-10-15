@@ -225,3 +225,6 @@ test.py
 # Datas
 data/agent.db
 data/
+
+# Tree
+tree.txt
