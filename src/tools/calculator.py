@@ -25,5 +25,10 @@ def _evaluate(node):
 
 @tool
 def calculator(expression: str) -> str:
-    """Evaluate a math expression like '12 * (3 + 4)'. Use this for any arithmetic."""
-    pass
+    """Evaluate a math expression such as '12 * (3 + 4)' or '2 ** 10 / 4'.
+    Supports + - * / % ** and parentheses. Use this for ANY arithmetic."""
+    try:
+        tree = ast.parse(expression, mode="eval")
+        return str(_evaluate(tree.body))
+    except Exception as e:
+        return f"Error: {e}"
