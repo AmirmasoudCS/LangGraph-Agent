@@ -59,7 +59,7 @@ def _transcript(messages) -> str:
     return "\n".join(lines)
 
 
-# ---------- Node 0: summarizer (runs before every question) ----------
+# ---------- Node: summarizer (runs before every question) ----------
 def summarize(state: AgentState):
     live = live_messages(state)
     if count_tokens_approximately(live) < SUMMARY_TRIGGER_TOKENS:
@@ -97,30 +97,7 @@ def summarize(state: AgentState):
     return {"summary": new_summary, "summarized_upto": old[-1].id}
 
 
-# ---------- Node 1: the agent (LLM that can call tools) ----------
-def agent(state: AgentState):
-    system_text = SYSTEM_TEXT
-    if state.get("summary"):
-        system_text += f"\n\nSummary of the earlier conversation:\n{state['summary']}"
-
-    known = facts_for_prompt()
-    if known:
-        system_text += f"\n\nKnown facts about the user (from earlier sessions):\n{known}"
-
-    # Safety net: trim what the model SEES; the database keeps everything.
-    history = trim_messages(
-        live_messages(state),
-        strategy="last",
-        max_tokens=MAX_HISTORY_TOKENS,
-        token_counter=count_tokens_approximately,
-        start_on="human",
-        allow_partial=False,
-    )
-    reply = llm_with_tools.invoke([SystemMessage(content=system_text)] + history)
-    return {"messages": [reply]}
-
-
-# ---------- Node 2: the critic ----------
+# ---------- Node: the critic ----------
 class Verdict(BaseModel):
     ok: bool
     reason: str
@@ -168,25 +145,71 @@ def after_critic(state: AgentState):
     return "agent" if state["verdict"] == "retry" else END
 
 
-# ---------- Wiring ----------
-builder = StateGraph(AgentState)
-builder.add_node("summarize", summarize)
-builder.add_node("agent", agent)
-builder.add_node("tools", ToolNode(ALL_TOOLS))
-builder.add_node("critic", critic)
-
-builder.add_edge(START, "summarize")
-builder.add_edge("summarize", "agent")
-builder.add_conditional_edges("agent", tools_condition, {"tools": "tools", END: "critic"})
-builder.add_edge("tools", "agent")
-builder.add_conditional_edges("critic", after_critic, {"agent": "agent", END: END})
-
-graph = builder.compile(checkpointer=checkpointer)
+# ---------- Graph factory ----------
+_DEFAULT_SAVER = object()   # sentinel: "use the SQLite checkpointer"
 
 
-def ask(question: str, thread_id: str = "default"):
+def build_graph(use_critic: bool = True, use_facts: bool = True, saver=_DEFAULT_SAVER):
+    """Build the agent graph.
+
+    use_critic: False removes the critic node (agent answers go straight to END).
+    use_facts:  False keeps long-term facts out of the system prompt.
+    saver:      checkpointer to use. Pass MemorySaver() for throw-away runs
+                (benchmark), so the real database is never touched.
+    """
+    if saver is _DEFAULT_SAVER:
+        saver = checkpointer
+
+    def agent(state: AgentState):
+        system_text = SYSTEM_TEXT
+        if state.get("summary"):
+            system_text += f"\n\nSummary of the earlier conversation:\n{state['summary']}"
+
+        if use_facts:
+            known = facts_for_prompt()
+            if known:
+                system_text += f"\n\nKnown facts about the user (from earlier sessions):\n{known}"
+
+        # Safety net: trim what the model SEES; the database keeps everything.
+        history = trim_messages(
+            live_messages(state),
+            strategy="last",
+            max_tokens=MAX_HISTORY_TOKENS,
+            token_counter=count_tokens_approximately,
+            start_on="human",
+            allow_partial=False,
+        )
+        reply = llm_with_tools.invoke([SystemMessage(content=system_text)] + history)
+        return {"messages": [reply]}
+
+    builder = StateGraph(AgentState)
+    builder.add_node("summarize", summarize)
+    builder.add_node("agent", agent)
+    builder.add_node("tools", ToolNode(ALL_TOOLS))
+
+    builder.add_edge(START, "summarize")
+    builder.add_edge("summarize", "agent")
+    builder.add_edge("tools", "agent")
+
+    if use_critic:
+        builder.add_node("critic", critic)
+        builder.add_conditional_edges("agent", tools_condition, {"tools": "tools", END: "critic"})
+        builder.add_conditional_edges("critic", after_critic, {"agent": "agent", END: END})
+    else:
+        builder.add_conditional_edges("agent", tools_condition, {"tools": "tools", END: END})
+
+    return builder.compile(checkpointer=saver)
+
+
+# Default graph: critic on, facts on, SQLite memory
+graph = build_graph()
+
+
+def ask(question: str, thread_id: str = "default", g=None):
     """Run the agent once. Returns (answer, revisions, verdict)."""
-    result = graph.invoke(
+    if g is None:
+        g = graph
+    result = g.invoke(
         {"messages": [("user", question)], "iterations": 0, "verdict": ""},
         config={"configurable": {"thread_id": thread_id}},
     )
