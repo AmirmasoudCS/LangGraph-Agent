@@ -7,7 +7,7 @@ from src.graph import graph
 
 console = Console()
 
-NODE_STYLE = {"agent": "cyan", "tools": "yellow", "critic": "magenta"}
+NODE_STYLE = {"summarize": "blue", "agent": "cyan", "tools": "yellow", "critic": "magenta"}
 VERDICT_STYLE = {"ok": "bold green", "retry": "bold red", "gave_up": "bold yellow"}
 
 
@@ -40,10 +40,17 @@ def run_with_internals(question: str, thread_id: str):
     with console.status("[bold cyan]thinking...", spinner="dots"):
         for step in graph.stream(inputs, config=config, stream_mode="updates"):
             for node, update in step.items():
+                update = update or {}
+                if node == "summarize" and not update:
+                    continue                      # summarizer had nothing to do
+
                 step_no += 1
                 body = []
                 for m in update.get("messages", []):
                     body += render_message(m)
+                if "summary" in update:
+                    body.append(Text("new running summary:", style="dim"))
+                    body.append(Text(update["summary"], style="white"))
                 if "verdict" in update:
                     style = VERDICT_STYLE.get(update["verdict"], "white")
                     body.append(Text(f"verdict: {update['verdict']}", style=style))
