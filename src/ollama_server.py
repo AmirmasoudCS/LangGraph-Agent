@@ -2,6 +2,7 @@ import atexit
 import os
 import subprocess
 import time
+import sys
 
 import requests
 
@@ -42,4 +43,11 @@ def ensure_server() -> str:
 
 def stop_server():
     if _process and _process.poll() is None:
-        _process.terminate()
+        if sys.platform == "win32":
+            # /T kills the child runner processes too, so VRAM is released
+            subprocess.run(
+                ["taskkill", "/F", "/T", "/PID", str(_process.pid)],
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            )
+        else:
+            _process.terminate()
