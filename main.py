@@ -2,12 +2,11 @@ import argparse
 import sys
 
 from rich.panel import Panel
-from rich.table import Table
 from rich.text import Text
 
 from src import facts, sessions
-from src.graph import ask, build_graph
-from src.memory import checkpointer
+from src.commands import ChatState, dispatch, discard_unsaved, show_sessions
+from src.graph import ask
 from src.ollama_server import ensure_server
 from src.display import console, run_with_internals, VERDICT_STYLE
 
@@ -48,24 +47,6 @@ def parse_args():
     actions.add_argument("--forget", "-f", metavar="ID_OR_ALL",
                          help="delete a saved fact by id, or 'all'")
     return parser.parse_args()
-
-
-def show_sessions() -> list[dict]:
-    all_sessions = sessions.list_all()
-    if not all_sessions:
-        console.print("[dim]No saved sessions yet.[/dim]")
-        return []
-    table = Table(title="Sessions", title_justify="left", border_style="cyan")
-    table.add_column("#", style="bold green", justify="right")
-    table.add_column("ID", style="bold yellow")
-    table.add_column("Name")
-    table.add_column("Created", style="dim")
-    table.add_column("Last used", style="dim")
-    for i, s in enumerate(all_sessions, start=1):
-        table.add_row(str(i), s["id"], s["name"],
-                      s["created_at"].replace("T", " "), s["last_used"].replace("T", " "))
-    console.print(table)
-    return all_sessions
 
 
 def pick_session():
@@ -135,13 +116,6 @@ def resolve_session(args):
     return sessions.new_id(), None             # (change this to always start fresh if you prefer)
 
 
-def discard_unsaved(session_id: str, session_name):
-    """A brand-new session that never got registered must not leave
-    orphan checkpoints behind in the database."""
-    if session_name is None:
-        checkpointer.delete_thread(session_id)
-
-
 def main():
     args = parse_args()
 
@@ -188,33 +162,39 @@ def main():
             "were NOT applied. Quit Ollama from the tray and rerun to apply them.[/yellow]"
         )
 
-    use_critic = not args.no_critic
-    use_facts = not args.no_facts
-    g = build_graph(use_critic=use_critic, use_facts=use_facts)   # same SQLite memory as always
-
     session_id, session_name = resolve_session(args)
-    mode = "ON" if args.internal else "OFF"
+    state = ChatState(                                    # everything the /commands can change
+        session_id=session_id, session_name=session_name,
+        internal=args.internal, use_critic=not args.no_critic, use_facts=not args.no_facts,
+    )
+
     label = f"[bold]{session_name}[/bold] ({session_id})" if session_name else "[bold]new session[/bold]"
-    console.print(f"[bold]Agent ready.[/bold] Session: {label}. Internal messages: [bold]{mode}[/bold]. Type 'quit' to exit.")
+    console.print(f"[bold]Agent ready.[/bold] Session: {label}. Type [bold]/help[/bold] for commands, 'quit' to exit.")
     console.print(
-        f"[dim]critic:[/dim] [bold]{'ON' if use_critic else 'OFF'}[/bold]  "
-        f"[dim]long-term facts:[/dim] [bold]{'ON' if use_facts else 'OFF'}[/bold]"
+        f"[dim]internal messages:[/dim] [bold]{'ON' if state.internal else 'OFF'}[/bold]  "
+        f"[dim]critic:[/dim] [bold]{'ON' if state.use_critic else 'OFF'}[/bold]  "
+        f"[dim]long-term facts:[/dim] [bold]{'ON' if state.use_facts else 'OFF'}[/bold]"
     )
 
     try:
         while True:
             q = console.input("\n[bold blue]You:[/bold blue] ")
-            if q.strip().lower() in ("quit", "exit"):
+            text = q.strip()
+            if text.lower() in ("quit", "exit"):
                 break
-            if not q.strip():
+            if not text:
+                continue
+            if text.startswith("/"):                      # slash command, not a question
+                if dispatch(text, state) == "quit":
+                    break
                 continue
 
             try:
-                if args.internal:
-                    answer, revisions, verdict = run_with_internals(q, session_id, g)
+                if state.internal:
+                    answer, revisions, verdict = run_with_internals(q, state.session_id, state.graph)
                 else:
                     with console.status("[bold cyan]thinking...", spinner="dots"):
-                        answer, revisions, verdict = ask(q, session_id, g)
+                        answer, revisions, verdict = ask(q, state.session_id, state.graph)
             except Exception as e:
                 console.print(Panel(
                     Text(f"{type(e).__name__}: {e}", style="white"),
@@ -225,12 +205,12 @@ def main():
                     border_style="red",
                     padding=(1, 2),
                 ))
-                discard_unsaved(session_id, session_name)
+                discard_unsaved(state.session_id, state.session_name)
                 continue
 
             style = VERDICT_STYLE.get(verdict, "white")
             border = {"ok": "green", "retry": "red", "gave_up": "yellow"}.get(verdict, "white")
-            check = verdict or ("off" if not use_critic else "n/a")
+            check = verdict or ("off" if not state.use_critic else "n/a")
 
             console.print()
             console.print(Panel(
@@ -244,23 +224,23 @@ def main():
             ))
 
             # Long-term memory: extract durable facts about the user
-            if use_facts:
+            if state.use_facts:
                 with console.status("[bold cyan]updating memory...", spinner="dots"):
-                    new_facts = facts.extract_and_save(q, answer, session_id)
+                    new_facts = facts.extract_and_save(q, answer, state.session_id)
                 for f in new_facts:
                     console.print(f"[dim]remembered:[/dim] [italic]{f}[/italic]")
 
             # First question of a new session: let the agent name it, then save it
-            if session_name is None:
+            if state.session_name is None:
                 with console.status("[bold cyan]naming session...", spinner="dots"):
-                    session_name = sessions.generate_name(q)
-                sessions.add(session_id, session_name)
-                console.print(f"[dim]Session saved as[/dim] [bold]{session_name}[/bold] [dim]({session_id})[/dim]")
+                    state.session_name = sessions.generate_name(q)
+                sessions.add(state.session_id, state.session_name)
+                console.print(f"[dim]Session saved as[/dim] [bold]{state.session_name}[/bold] [dim]({state.session_id})[/dim]")
             else:
-                sessions.touch(session_id)
+                sessions.touch(state.session_id)
 
     except (KeyboardInterrupt, EOFError):
-        discard_unsaved(session_id, session_name)
+        discard_unsaved(state.session_id, state.session_name)
         console.print("\n[dim]Bye.[/dim]")
 
 
