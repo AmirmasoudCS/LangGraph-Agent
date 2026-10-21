@@ -20,21 +20,9 @@ The project also includes a benchmark suite for comparing a plain language-model
 
 The agent is built as a LangGraph workflow:
 
-```mermaid
-flowchart TD
-    A[User question] --> B[Summarize older history if needed]
-    B --> C[Agent / Ollama model]
-    C --> D{Tool calls requested?}
-    D -- Yes --> E[Execute tools]
-    E --> C
-    D -- No --> F{Critic enabled?}
-    F -- No --> G[Final answer]
-    F -- Yes --> H[Critic checks answer]
-    H -- Accept --> G
-    H -- Request revision --> I{Revision limit reached?}
-    I -- No --> C
-    I -- Yes --> G
-```
+<div>
+    <img src="assets/diagram.png" width="100%">
+</div>
 
 The model can call tools when useful. With the critic enabled, a structured verdict determines whether the answer is accepted or sent back to the agent with feedback. The configured revision limit is two. The critic is a best-effort check, not a guarantee that every answer is correct.
 
